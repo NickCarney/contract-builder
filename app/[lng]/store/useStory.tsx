@@ -1,0 +1,28 @@
+//file to store necessary components for story implementation
+import {create} from 'zustand';
+import { persist } from 'zustand/middleware'
+
+// needs to store song title
+interface SplitsState {
+  address: string;
+  isConnected: boolean;
+  updateAddress: (value : string) => void;
+  updateIsConnected: (value: boolean) => void;
+} 
+
+const useStory = create<SplitsState>()(
+  persist(
+    (set) => ({
+    address: "",
+    updateAddress: (value) => set({ address: value }),
+    isConnected: false,
+    updateIsConnected: (value) => set({ isConnected: value }),
+}),
+{
+  name: 'story-age',
+  partialize: (state) => ({ song: state.address, recording: state.isConnected }) 
+}
+)
+);
+
+export default useStory;
