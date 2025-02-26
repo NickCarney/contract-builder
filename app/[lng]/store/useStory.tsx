@@ -4,16 +4,16 @@ import { persist } from 'zustand/middleware'
 
 // needs to store song title
 interface SplitsState {
-  address: string;
+  address: `0x${string}`;
   isConnected: boolean;
-  updateAddress: (value : string) => void;
+  updateAddress: (value : `0x${string}`) => void;
   updateIsConnected: (value: boolean) => void;
 } 
 
 const useStory = create<SplitsState>()(
   persist(
     (set) => ({
-    address: "",
+    address: "0x",
     updateAddress: (value) => set({ address: value }),
     isConnected: false,
     updateIsConnected: (value) => set({ isConnected: value }),
