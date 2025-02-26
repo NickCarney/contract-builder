@@ -36,6 +36,7 @@
     "resend": "^4.1.1",
     "stripe": "^8.210.0",
     "uuid": "^11.0.3",
+    "wagmi": "^2.14.12",
     "zustand": "^5.0.0"
   },
   "devDependencies": {
