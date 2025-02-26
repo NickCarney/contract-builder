@@ -6,6 +6,7 @@ import useJurisdiction from "./store/useJurisdiction";
 import { useTranslation } from "../i18n/client";
 import Popup from "reactjs-popup";
 import jurisdictions from "./public/jurisdictions.json"
+import ConnectWallet from "../components/WalletConnection";
 
 export default function Home({
   params,
@@ -87,6 +88,7 @@ export default function Home({
         <span className="text-white font-rubik text-center text-[35px] sm:text-[0px]">
           {t("music")}
         </span>
+        <ConnectWallet />
         {!isOpen2 && (
           <Popup
             trigger={<button>{t("get-started-button")}</button>}

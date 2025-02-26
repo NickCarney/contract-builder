@@ -8,6 +8,7 @@ import { languages } from "../i18n/settings";
 import { useTranslation } from "../i18n";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import ConnectWallet from "../components/WalletConnection";
 
 import { Providers } from './providers'; 
 
@@ -53,16 +54,21 @@ export default async function RootLayout({
           </div>
         </header>
         <hr className="w-full absolute" /> 
-        <Providers>{children}</Providers>
-        <SpeedInsights />
-        <Analytics />
-        <Image
+        <Providers>{children}
+          <div className="absolute sticky bottom-0">
+            <ConnectWallet/>
+            <Image
           src={mesaImage}
           width={95}
           height={30}
           alt="M"
           className="relative bottom-0 left-1/2 transform -translate-x-1/2"
         ></Image>
+          </div>
+        </Providers>
+        <SpeedInsights />
+        <Analytics />
+        
       </body>
     </html>
   );

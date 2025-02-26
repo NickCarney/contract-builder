@@ -1,7 +1,7 @@
 "use client"
 import { useAccount, useConnect, useDisconnect } from "wagmi"
 import Image from "next/image";
-import metamaskImage from "../public/images/metamask.png";
+import metamaskImage from "../[lng]/public/images/metamask.png";
 
 function ConnectWallet() {
   const { address, isConnected } = useAccount()
