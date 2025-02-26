@@ -88,7 +88,6 @@ export default function Home({
         <span className="text-white font-rubik text-center text-[35px] sm:text-[0px]">
           {t("music")}
         </span>
-        <ConnectWallet />
         {!isOpen2 && (
           <Popup
             trigger={<button>{t("get-started-button")}</button>}
