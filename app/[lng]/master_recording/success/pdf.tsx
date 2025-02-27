@@ -116,7 +116,7 @@ const PDF = (isClicked: boolean) => {
         doc.text(t("id", { idNum }), x, y);
         y = getY(y, 5);
         }
-        ids.push(id);
+        ids.push(idNum);
         y = getY(y,10);
       }
     });
