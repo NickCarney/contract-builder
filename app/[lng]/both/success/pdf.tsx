@@ -523,10 +523,10 @@ const PDF = (isClicked: boolean) => {
         doc.setFont("Palatino Linotype", "normal");
         const name = pageData.legalName;
         doc.text(t("7", { name }), x, y);
-        doc.line(x + 27, y + 1, x + 150, y + 1);
+        doc.line(x + 29, y + 1, x + 150, y + 1);
         y = getY(y, 5);
         doc.text(t("44"), x, y);
-        doc.line(x + 10, y + 1, x + 80, y + 1);
+        doc.line(x + 19, y + 1, x + 80, y + 1);
         doc.text(t("45", { date }), x + 85, y);
         doc.line(x + 95, y + 1, x + 132, y + 1);
         y = getY(y, 15);
