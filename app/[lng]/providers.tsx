@@ -7,7 +7,7 @@ import { base } from 'wagmi/chains';
 export function Providers(props: { children: ReactNode }) {
   return (
     <OnchainKitProvider
-      apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+      apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_CLIENT_KEY}
       chain={base}
       config={{
         appearance: {
