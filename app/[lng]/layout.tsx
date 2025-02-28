@@ -55,12 +55,10 @@ export default async function RootLayout({
         </header>
         <hr className="w-full absolute" /> 
         <Providers>
-        <div className="flex">
+          <div className="pl-4">
             <ConnectWallet />
-            <div className="flex-1">
-              {children}
-            </div>
           </div>
+              {children}
           <div className="">
             <Image
           src={mesaImage}
