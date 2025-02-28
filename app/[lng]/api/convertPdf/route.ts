@@ -1,0 +1,78 @@
+import { NextRequest, NextResponse } from "next/server";
+import { fromPath } from "pdf2pic";
+import path from "path";
+import fs from "fs/promises";
+import { v4 as uuidv4 } from "uuid";
+import sharp from "sharp";
+
+async function mergeImages(imagePaths: string[], outputPath: string) {
+    const images = await Promise.all(imagePaths.map((path) => sharp(path).toBuffer()));
+    const { width, height } = await sharp(imagePaths[0]).metadata();
+  
+    sharp({
+      create: {
+        width: width!,
+        height: height! * imagePaths.length,
+        channels: 4,
+        background: { r: 0, g: 0, b: 0, alpha: 0 }
+      },
+      limitInputPixels: false
+    })
+    .composite(images.map((img, i) => ({ input: img, top: i * 1000, left: 0 })))
+    .toFile(outputPath);
+  }
+
+export async function POST(req: NextRequest) {
+  try {
+    const { pdfUrl } = await req.json();
+    if (!pdfUrl) {
+      return NextResponse.json({ error: "Missing PDF URL" }, { status: 400 });
+    }
+
+    // Generate a unique filename
+    const tempPdfName = `${uuidv4()}.pdf`;
+    const tempPdfPath = path.join("/tmp", tempPdfName); // Use system temp folder
+
+    // Fetch the PDF using fetch instead of axios
+    const response = await fetch(pdfUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch PDF: ${response.statusText}`);
+    }
+    const buffer = await response.arrayBuffer();
+    await fs.writeFile(tempPdfPath, Buffer.from(buffer));
+
+    // Ensure file exists before converting
+    await fs.access(tempPdfPath);
+
+    // Output directory
+    const outputDir = path.join(process.cwd(), "public", "images");
+    await fs.mkdir(outputDir, { recursive: true });
+
+    // Convert PDF to Image
+    const converter = fromPath(tempPdfPath, {
+      density: 300,
+      savePath: outputDir,
+      format: "png",
+      width: 1000,
+      height: 1414,
+    });
+    console.log("trying resukts")
+    const results = await converter.bulk(-1);
+    console.log(results)
+    for (let i=0; i<results.length; i++){
+        const result = results[i];
+        console.log(`Page ${i+1} converted: ${result.name}`);
+    }
+
+    const imagePaths = results.map(result => result.path!);
+    await mergeImages(imagePaths, path.join(outputDir, "combined.png"));
+
+    // Cleanup
+    await fs.unlink(tempPdfPath);
+
+    return NextResponse.json({ success: true, imagePath: outputDir });
+  } catch (error) {
+    console.error("Error processing IPFS PDF:", error);
+    return NextResponse.json({ error: "Failed to convert PDF" }, { status: 500 });
+  }
+}

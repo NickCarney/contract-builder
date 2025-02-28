@@ -31,6 +31,7 @@
     "next-i18next": "^15.3.1",
     "node": "^18.20.7",
     "npm": "^11.1.0",
+    "pdf2pic": "^3.1.4",
     "pinata": "^1.10.1",
     "pinata-web3": "^0.5.4",
     "react": "^18.3.1",
@@ -41,6 +42,7 @@
     "react-router-dom": "^6.26.2",
     "reactjs-popup": "^2.0.6",
     "resend": "^4.1.1",
+    "sharp": "^0.33.5",
     "stripe": "^8.210.0",
     "uuid": "^11.0.3",
     "zustand": "^5.0.0"
