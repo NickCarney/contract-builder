@@ -33,7 +33,7 @@ try {
     console.error("Error creating file object:", error);
 }
 };
-
+//eslint-disable-next-line
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
     image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     console.log(image);
