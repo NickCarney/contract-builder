@@ -476,7 +476,7 @@ const PDF = (isClicked: boolean) => {
     const docTitle = "Splits+" + song + ".pdf";
     doc.save(docTitle);
 
-    const JWT = process.env.NEXT_PUBLIC_PINATA_JWT;
+    const JWT = process.env.PINATA_JWT!;
 
     async function pinFileToIPFS() {
       try {

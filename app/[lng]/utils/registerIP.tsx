@@ -8,7 +8,7 @@ import path from 'path';
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
-  pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
+  pinataJwt: process.env.PINATA_JWT,
 });
 
 
