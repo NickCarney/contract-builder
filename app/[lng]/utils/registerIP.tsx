@@ -4,7 +4,6 @@ import { uploadJSONToIPFS } from './uploadToIpfs'
 import { createHash } from 'crypto'
 import {Address} from 'viem'
 import path from 'path';
-import fs from 'fs';
 
 import { PinataSDK } from "pinata-web3";
 
