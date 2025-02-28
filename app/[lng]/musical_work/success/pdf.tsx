@@ -8,9 +8,11 @@ import useDynamicPageStore from "../../store/use[page]";
 import useQuestion5Admin from "../../store/useQuestion5Admin";
 import useQuestion5Vote from "../../store/useQuestion5Vote";
 import useJurisdiction from "../../store/useJurisdiction";
+import useStory from "../../store/useStory";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../../../lib/supabaseClient";
 import { v4 as uuidv4 } from "uuid";
+import { RegisterIP } from "../../utils/registerIP";
 
 const getX = (text: string) => {
   let x = 50;
@@ -31,6 +33,7 @@ const PDF = (isClicked: boolean) => {
   const percent = useQuestion5Vote((state) => state.percent);
   const language = useJurisdiction((state) => state.language);
   const jurisdiction = useJurisdiction((state) => state.jurisdiction);
+  const address = useStory((state) => state.address);
   const { t } = useTranslation("musical_work/pdf");
   const setCid = useQuestion1((state) => state.setCid);
   const names: string[] = [];
@@ -49,13 +52,14 @@ const PDF = (isClicked: boolean) => {
       },
       body: JSON.stringify({ pdfUrl: `https://ipfs.io/ipfs/${cid}` }),
     });
-  
+
     const data = await response.json();
     if (data.success) {
       console.log("Image saved at:", data.imagePath);
     } else {
       console.error("Conversion failed:", data.error);
     }
+    return data.imagePath;
   }
 
 
@@ -499,7 +503,10 @@ const PDF = (isClicked: boolean) => {
             },
           ]);
 
-          await convertPdf(cid);
+          const res = await convertPdf(cid);
+          console.log(res);
+
+          await RegisterIP(res, address, song, cid, pages);
 
         if (error) {
           console.error("Error storing data in Supabase:", error);
