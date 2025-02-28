@@ -7,19 +7,6 @@ import { useTranslation } from "../i18n/client";
 import Popup from "reactjs-popup";
 import jurisdictions from "./public/jurisdictions.json"
 
-// base wallet - not used for ui
-// import {
-//   ConnectWallet,
-//   Wallet,
-//   WalletAdvanced,
-//   WalletAdvancedAddressDetails,
-//   WalletAdvancedTokenHoldings,
-//   WalletAdvancedTransactionActions,
-//   WalletAdvancedWalletActions,
-// } from '@coinbase/onchainkit/wallet';
-// import { Avatar, Name } from '@coinbase/onchainkit/identity';
-
-
 export default function Home({
   params,
 }: {
@@ -353,18 +340,6 @@ export default function Home({
             </div>
           </Popup>
         )}
-        {/* <Wallet>
-          <ConnectWallet>
-            <Avatar />
-            <Name />
-          </ConnectWallet>
-          <WalletAdvanced>
-            <WalletAdvancedWalletActions />
-            <WalletAdvancedAddressDetails />
-            <WalletAdvancedTransactionActions />
-            <WalletAdvancedTokenHoldings />
-          </WalletAdvanced>
-        </Wallet> */}
       </footer>
     </div>
   );
