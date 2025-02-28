@@ -3,11 +3,42 @@ import { SPGNFTContractAddress, client } from './utils'
 import { uploadJSONToIPFS } from './uploadToIpfs'
 import { createHash } from 'crypto'
 import {Address} from 'viem'
+import path from 'path';
+import fs from 'fs';
+
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
+});
+
+
+async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
+    return new File([fileData], fileName, { type: fileType });
+  }
+
+async function handleFileCreation(filePath: string) {
+try {
+    const response = await fetch(filePath);
+    const fileData = await response.blob();
+    
+    const fileName = 'combined.png';
+    const fileType = 'image/png';
+
+    const file = await createFileObject(fileData, fileName, fileType);
+    
+
+    const upload = await pinata.upload.file(file);
+    return upload.IpfsHash;
+} catch (error) {
+    console.error("Error creating file object:", error);
+}
+};
 
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
-    image = image || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     console.log(image);
-
+    handleFileCreation(image);
     console.log(address);
 
     interface Contributor {
