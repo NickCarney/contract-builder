@@ -56,13 +56,8 @@ export async function POST(req: NextRequest) {
       width: 1000,
       height: 1414,
     });
-    console.log("trying resukts")
+
     const results = await converter.bulk(-1);
-    console.log(results)
-    for (let i=0; i<results.length; i++){
-        const result = results[i];
-        console.log(`Page ${i+1} converted: ${result.name}`);
-    }
 
     const imagePaths = results.map(result => result.path!);
     await mergeImages(imagePaths, path.join(outputDir, "combined.png"));
@@ -70,7 +65,7 @@ export async function POST(req: NextRequest) {
     // Cleanup
     await fs.unlink(tempPdfPath);
 
-    return NextResponse.json({ success: true, imagePath: outputDir });
+    return NextResponse.json({ success: true, imagePath: outputDir+'combined.png' });
   } catch (error) {
     console.error("Error processing IPFS PDF:", error);
     return NextResponse.json({ error: "Failed to convert PDF" }, { status: 500 });
