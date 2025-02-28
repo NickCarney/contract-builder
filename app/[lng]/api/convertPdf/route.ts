@@ -3,7 +3,7 @@ import { fromPath } from "pdf2pic";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import sharp from "sharp";
-import fsPromises from "fs/promises";
+import fs from "fs/promises";
 
 
 async function mergeImages(imagePaths: string[], outputPath: string) {
@@ -45,14 +45,14 @@ export async function POST(req: NextRequest) {
       throw new Error(`Failed to fetch PDF: ${response.statusText}`);
     }
     const buffer = await response.arrayBuffer();
-    await fsPromises.writeFile(tempPdfPath, Buffer.from(buffer));
+    await fs.writeFile(tempPdfPath, Buffer.from(buffer));
 
     // Ensure file exists before converting
-    await fsPromises.access(tempPdfPath);
+    await fs.access(tempPdfPath);
 
     // Output directory
     const outputDir = path.join(process.cwd(), "public", "images");
-    await fsPromises.mkdir(outputDir, { recursive: true });
+    await fs.mkdir(outputDir, { recursive: true });
 
     // Convert PDF to Image
     const converter = fromPath(tempPdfPath, {
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     const outPath = await mergeImages(imagePaths, combinedPath);
     console.log("DONE");
     // Cleanup
-    await fsPromises.unlink(tempPdfPath);
+    await fs.unlink(tempPdfPath);
 
     return NextResponse.json({ success: true, imagePath: outPath });
   } catch (error) {
