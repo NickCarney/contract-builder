@@ -39,6 +39,23 @@ const PDF = (isClicked: boolean) => {
   const addresses: string[] = [];
   const ids: string[] = [];
 
+  async function convertPdf(cid:string) {
+    const response = await fetch("/en/api/convertPdf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ pdfUrl: `https://ipfs.io/ipfs/${cid}` }),
+    });
+  
+    const data = await response.json();
+    if (data.success) {
+      console.log("Image saved at:", data.imagePath);
+    } else {
+      console.error("Conversion failed:", data.error);
+    }
+  }
+
   const generatePDF = async () => {
     const doc = new jsPDF();
 
@@ -483,13 +500,13 @@ const PDF = (isClicked: boolean) => {
         console.log(response);
         console.log(response.IpfsHash);
 
-        const cid = response.IpfsHash; // Get the CID from the response
+        const cid = response.IpfsHash; // Get the CID
         setCid(cid);
-        const userId = uuidv4(); // Generate UUID here
+        const userId = uuidv4(); // Generate UUID
 
-        // Now post the userId and CID to Supabase
+        // post the userId and CID to Supabase
         const { data: supabaseData, error } = await supabase
-          .from("contracts") // Replace with your actual table name
+          .from("contracts")
           .insert([
             {
               id: userId, // Store userId
@@ -505,6 +522,8 @@ const PDF = (isClicked: boolean) => {
               ids: ids,
             },
           ]);
+
+          await convertPdf(cid);
 
         if (error) {
           console.error("Error storing data in Supabase:", error);
