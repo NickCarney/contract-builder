@@ -6,11 +6,11 @@ import {Address, Hex} from 'viem'
 import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress, zeroHash } from 'viem';
 
-import { PinataSDK } from "pinata-web3";
+// import { PinataSDK } from "pinata-web3";
 
-const pinata = new PinataSDK({
-  pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
-});
+// const pinata = new PinataSDK({
+//   pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
+// });
 
 //LicensingConfig type
 export type LicensingConfig = {
