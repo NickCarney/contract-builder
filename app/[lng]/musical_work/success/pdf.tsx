@@ -505,8 +505,9 @@ const PDF = (isClicked: boolean) => {
             },
           ]);
           //console.log("about to convert pdf with "+cid);
-          const res = await convertPdf(cid);
+          let res = await convertPdf(cid);
           //console.log(res);
+          res = '/public/images/combined.png';
 
           //console.log("about to register ip with "+res+address+song+cid+pages);
           await RegisterIP(res, address, song, cid, pages);
