@@ -39,7 +39,6 @@ export async function POST(req: NextRequest) {
     const tempPdfName = `${uuidv4()}.pdf`;
     const tempPdfPath = path.join("/tmp", tempPdfName); // Use system temp folder
 
-    // Fetch the PDF using fetch instead of axios
     const response = await fetch(pdfUrl);
     if (!response.ok) {
       throw new Error(`Failed to fetch PDF: ${response.statusText}`);

@@ -28,32 +28,32 @@ async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, 
     return new File([fileData], fileName, { type: fileType });
   }
 
-async function handleFileCreation(filePath: string) {
-try {
-    const response = await fetch(filePath);
-    const fileData = await response.blob();
+// async function handleFileCreation(filePath: string) {
+// try {
+//     const response = await fetch(filePath);
+//     const fileData = await response.blob();
     
-    const fileName = 'combined.png';
-    const fileType = 'image/png';
+//     const fileName = 'combined.png';
+//     const fileType = 'image/png';
 
-    const file = await createFileObject(fileData, fileName, fileType);
+//     const file = await createFileObject(fileData, fileName, fileType);
     
 
-    const upload = await pinata.upload.file(file);
-    if( upload.IpfsHash == undefined){
-        return "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
-    }
-    return "https://ipfs.io/ipfs/"+upload.IpfsHash;
-} catch (error) {
-    console.error("Error creating file object:", error);
-}
-};
+//     const upload = await pinata.upload.file(file);
+//     if( upload.IpfsHash == undefined){
+//         return "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+//     }
+//     return "https://ipfs.io/ipfs/"+upload.IpfsHash;
+// } catch (error) {
+//     console.error("Error creating file object:", error);
+// }
+// };
 //eslint-disable-next-line
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
     //image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     image = process.cwd()+"public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
-    console.log(handleFileCreation);
+    //console.log(handleFileCreation);
     //const imageResult = await handleFileCreation(image);
     image = "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
