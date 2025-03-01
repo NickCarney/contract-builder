@@ -7,6 +7,7 @@ import fs from "fs/promises";
 
 
 async function mergeImages(imagePaths: string[], outputPath: string) {
+    console.log("mergeImages");
     const images = await Promise.all(imagePaths.map((path) => sharp(path).toBuffer()));
     const { width, height } = await sharp(imagePaths[0]).metadata();
     await sharp({
@@ -28,6 +29,7 @@ async function mergeImages(imagePaths: string[], outputPath: string) {
   }
 
 export async function POST(req: NextRequest) {
+  console.log("convertPdf");
   try {
     const { pdfUrl } = await req.json();
     //console.log(pdfUrl)

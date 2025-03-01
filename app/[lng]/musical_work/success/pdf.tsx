@@ -56,7 +56,7 @@ const PDF = (isClicked: boolean) => {
 
     const data = await response.json();
     if (data.success) {
-      //console.log("Image saved at:", data.imagePath);
+      console.log("Image saved at:", data.imagePath);
     } else {
       console.error("Conversion failed:", data.error);
     }

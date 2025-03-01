@@ -50,8 +50,9 @@ export type LicensingConfig = {
 // };
 //eslint-disable-next-line
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
+    console.log("registerIp");
     //image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
-    image = process.cwd()+"public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    //image = process.cwd()+"public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
     //console.log(handleFileCreation);
     //const imageResult = await handleFileCreation(image);
@@ -88,8 +89,8 @@ export async function RegisterIP(image : string, address: Address, song: string,
       });
       //console.log(contributors);
 
-      const contract = await fetch(`https://ipfs.io/ipfs/${cid}`,{method:"GET", mode: 'cors'});
-      const content = contract.text;
+    //   const contract = await fetch(`https://ipfs.io/ipfs/${cid}`,{method:"GET", mode: 'cors'});
+    //   const content = contract.text;
       //console.log(contract.json)
       //console.log("CONTENTCONTENT"+content)
 
@@ -113,7 +114,7 @@ export async function RegisterIP(image : string, address: Address, song: string,
         mediaUrl: mediaUrl,
         mediaHash: mediaHash,
         mediaType: 'image/png',
-        content: content,
+        //content: content,
     }
 
     // 2. Set up your NFT Metadata
