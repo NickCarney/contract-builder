@@ -24,9 +24,9 @@ export type LicensingConfig = {
     expectGroupRewardPool: Address;
   };
 
-async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
-    return new File([fileData], fileName, { type: fileType });
-  }
+// async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
+//     return new File([fileData], fileName, { type: fileType });
+//   }
 
 // async function handleFileCreation(filePath: string) {
 // try {
