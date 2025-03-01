@@ -21,7 +21,7 @@ async function mergeImages(imagePaths: string[], outputPath: string) {
     .composite(images.map((img, i) => ({ input: img, top: i * 1000, left: 0 })))
     .toFile(outputPath);
 
-    console.log(outputPath);
+    //console.log(outputPath);
 
     return outputPath;
     
@@ -30,7 +30,7 @@ async function mergeImages(imagePaths: string[], outputPath: string) {
 export async function POST(req: NextRequest) {
   try {
     const { pdfUrl } = await req.json();
-    console.log(pdfUrl)
+    //console.log(pdfUrl)
     if (!pdfUrl) {
       return NextResponse.json({ error: "Missing PDF URL" }, { status: 400 });
     }
@@ -66,10 +66,10 @@ export async function POST(req: NextRequest) {
     const results = await converter.bulk(-1);
 
     const imagePaths = results.map(result => result.path!);
-    console.log(imagePaths);
+    //console.log(imagePaths);
     const combinedPath = path.join(outputDir, "combined.png");
     const outPath = await mergeImages(imagePaths, combinedPath);
-    console.log("DONE");
+    //console.log("DONE");
     // Cleanup
     await fs.unlink(tempPdfPath);
 

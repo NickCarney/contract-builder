@@ -40,7 +40,10 @@ try {
     
 
     const upload = await pinata.upload.file(file);
-    return upload.IpfsHash;
+    if( upload.IpfsHash == undefined){
+        return "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    }
+    return "https://ipfs.io/ipfs/"+upload.IpfsHash;
 } catch (error) {
     console.error("Error creating file object:", error);
 }
@@ -48,10 +51,12 @@ try {
 //eslint-disable-next-line
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
     //image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
-    image = process.cwd()+"/public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
-    console.log(image);
-    handleFileCreation(image);
-    console.log(address);
+    image = process.cwd()+"public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    //console.log(image);
+    const imageResult = await handleFileCreation(image);
+    image = imageResult!;
+    //console.log(image);
+    //console.log(address);
 
     interface Contributor {
         id: number;
@@ -80,12 +85,12 @@ export async function RegisterIP(image : string, address: Address, song: string,
 
         contributors.push([{id:1, name:name, email:email, split:split, aka:aka, ipi:ipi, homeAddress:homeAddress, idNum:idNum, publisher:publisher}]);
       });
-      console.log(contributors);
+      //console.log(contributors);
 
       const contract = await fetch(`https://ipfs.io/ipfs/${cid}`,{method:"GET"});
       const content = contract.text;
-      console.log(contract.json)
-      console.log("CONTENTCONTENT"+content)
+      //console.log(contract.json)
+      //console.log("CONTENTCONTENT"+content)
 
 
       //image = image;
