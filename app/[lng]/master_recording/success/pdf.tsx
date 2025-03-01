@@ -8,9 +8,11 @@ import useDynamicPageStore from "../../store/use[page]";
 import useQuestion5Admin from "../../store/useQuestion5Admin";
 import useQuestion5Vote from "../../store/useQuestion5Vote";
 import useJurisdiction from "../../store/useJurisdiction";
+import useStory from "../../store/useStory";
 import { useTranslation } from "react-i18next";
 import { supabase } from "../../../lib/supabaseClient";
 import { v4 as uuidv4 } from "uuid";
+import { RegisterIP } from "../../utils/registerIP";
 
 const getX = (text: string) => {
   let x = 50;
@@ -31,6 +33,7 @@ const PDF = (isClicked: boolean) => {
   const percent = useQuestion5Vote((state) => state.percent);
   const language = useJurisdiction((state) => state.language);
   const jurisdiction = useJurisdiction((state) => state.jurisdiction);
+  const address = useStory((state) => state.address);
   const { t } = useTranslation("master_recording/pdf");
   const setCid = useQuestion1((state) => state.setCid);
   const names: string[] = [];
@@ -54,6 +57,7 @@ const PDF = (isClicked: boolean) => {
     } else {
       console.error("Conversion failed:", data.error);
     }
+    return data.imagePath;
   }
 
   const generatePDF = async () => {
@@ -497,8 +501,8 @@ const PDF = (isClicked: boolean) => {
         );
 
         const response = await request.json();
-        console.log(response);
-        console.log(response.IpfsHash);
+        //console.log(response);
+        //console.log(response.IpfsHash);
 
         const cid = response.IpfsHash; // Get the CID
         setCid(cid);
@@ -523,7 +527,12 @@ const PDF = (isClicked: boolean) => {
             },
           ]);
 
-          await convertPdf(cid);
+          //console.log("about to convert pdf with "+cid);
+          const res = await convertPdf(cid);
+          //console.log(res);
+
+          //console.log("about to register ip with "+res+address+song+cid+pages);
+          await RegisterIP(res, address, song, cid, pages);
 
         if (error) {
           console.error("Error storing data in Supabase:", error);

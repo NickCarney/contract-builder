@@ -456,6 +456,7 @@ const PDF = (isClicked: boolean) => {
     doc.save(docTitle);
 
     const JWT = process.env.NEXT_PUBLIC_PINATA_JWT!;
+    
     async function pinFileToIPFS() {
       try {
         const blob = new Blob([pdfBlob], { type: "application/pdf" });

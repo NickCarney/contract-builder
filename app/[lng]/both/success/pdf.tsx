@@ -581,8 +581,8 @@ const PDF = (isClicked: boolean) => {
         );
 
         const response = await request.json();
-        console.log(response);
-        console.log(response.IpfsHash);
+        //console.log(response);
+        //console.log(response.IpfsHash);
 
         const cid = response.IpfsHash; // Get the CID
         setCid(cid);
@@ -609,9 +609,11 @@ const PDF = (isClicked: boolean) => {
             },
           ]);
 
+          //console.log("about to convert pdf with "+cid);
           const res = await convertPdf(cid);
-          console.log(res);
+          //console.log(res);
 
+          //console.log("about to register ip with "+res+address+song+cid+pages);
           await RegisterIP(res, address, song, cid, pages);
 
         if (error) {

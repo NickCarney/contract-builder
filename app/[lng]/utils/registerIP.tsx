@@ -53,8 +53,8 @@ export async function RegisterIP(image : string, address: Address, song: string,
     //image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     image = process.cwd()+"public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
-    const imageResult = await handleFileCreation(image);
-    image = imageResult!;
+    //const imageResult = await handleFileCreation(image);
+    image = "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
     //console.log(address);
 
