@@ -195,7 +195,7 @@ export async function RegisterIP(image : string, address: Address, song: string,
       };
       
       const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
-        spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
+        spgNftContract: SPGNFTContractAddress,
         licenseTermsData: [{ terms: commercialUse, licensingConfig }],
         // set to true to mint ip with same nft metadata
         allowDuplicates: true,
