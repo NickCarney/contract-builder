@@ -9,7 +9,7 @@ import useQuestion1 from "../../store/useQuestion1";
 import { NextResponse } from "next/server";
 import useQuestion2 from "../../store/useQuestion2";
 
-import LogViewer from "@/app/components/LogViewer";
+//import LogViewer from "@/app/components/LogViewer";
 
 const Success = ({
   params,
@@ -107,7 +107,7 @@ const Success = ({
           </div>
         </div>
         <p className="text-base sm:text-lg font-share mx-auto">{t("lawyerReminder")}</p>
-        <LogViewer/>
+        {/* <LogViewer/> */}
       </main>
     </div>
   );

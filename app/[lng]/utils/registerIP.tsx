@@ -88,7 +88,7 @@ export async function RegisterIP(image : string, address: Address, song: string,
       });
       //console.log(contributors);
 
-      const contract = await fetch(`https://ipfs.io/ipfs/${cid}`,{method:"GET"});
+      const contract = await fetch(`https://ipfs.io/ipfs/${cid}`,{method:"GET", mode: 'cors'});
       const content = contract.text;
       //console.log(contract.json)
       //console.log("CONTENTCONTENT"+content)
@@ -204,6 +204,7 @@ export async function RegisterIP(image : string, address: Address, song: string,
         spgNftContract: SPGNFTContractAddress,
         licenseTermsData: [{ terms: commercialUse, licensingConfig }],
         // set to true to mint ip with same nft metadata
+        recipient:address,
         allowDuplicates: true,
         // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
         ipMetadata: {
