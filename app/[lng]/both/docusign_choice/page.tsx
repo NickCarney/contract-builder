@@ -50,7 +50,6 @@ const DocusignChoice = ({
     const response = await fetch(`../api/checkout_sessions`, {
       method: "POST",
       headers: {
-        'Access-Control-Allow-Origin': '*',
       },
     });
     const data = await response.json();

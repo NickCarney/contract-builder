@@ -45,11 +45,11 @@ const PDF = (isClicked: boolean) => {
   const publishers: string[] = [];
 
   async function convertPdf(cid:string) {
+    console.log(cid);
     const response = await fetch("/en/api/convertPdf", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({ pdfUrl: `https://ipfs.io/ipfs/${cid}` }),
     });
@@ -471,7 +471,6 @@ const PDF = (isClicked: boolean) => {
             method: "POST",
             headers: {
               Authorization: `Bearer ${JWT}`,
-              'Access-Control-Allow-Origin': '*',
             },
             body: data,
           }
