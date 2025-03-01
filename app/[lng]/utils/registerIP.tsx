@@ -2,14 +2,27 @@
 import { SPGNFTContractAddress, client } from './utils'
 import { uploadJSONToIPFS } from './uploadToIpfs'
 import { createHash } from 'crypto'
-import {Address} from 'viem'
-import path from 'path';
+import {Address, Hex} from 'viem'
+import { LicenseTerms } from '@story-protocol/core-sdk';
+import { zeroAddress, zeroHash } from 'viem';
 
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
   pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
 });
+
+//LicensingConfig type
+export type LicensingConfig = {
+    isSet: boolean;
+    mintingFee: bigint | string | number;
+    licensingHook: Address;
+    hookData: Hex;
+    commercialRevShare: number | string;
+    disabled: boolean;
+    expectMinimumGroupRewardShare: number | string;
+    expectGroupRewardPool: Address;
+  };
 
 async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
     return new File([fileData], fileName, { type: fileType });
@@ -69,6 +82,11 @@ export async function RegisterIP(image : string, address: Address, song: string,
       });
       console.log(contributors);
 
+      const contract = await fetch(`https://ipfs.io/ipfs/${cid}`,{method:"GET"});
+      const content = contract.text;
+      console.log(contract.json)
+      console.log("CONTENTCONTENT"+content)
+
 
       //image = image;
       const imageHash = createHash('sha256').update(JSON.stringify(image)).digest('hex')
@@ -89,6 +107,7 @@ export async function RegisterIP(image : string, address: Address, song: string,
         mediaUrl: mediaUrl,
         mediaHash: mediaHash,
         mediaType: 'image/png',
+        content: content,
     }
 
     // 2. Set up your NFT Metadata
@@ -127,33 +146,77 @@ export async function RegisterIP(image : string, address: Address, song: string,
     // 4. Register the NFT as an IP Asset
     //
     // Docs: https://docs.story.foundation/docs/sdk-ipasset#mintandregisterip
-    const response = await client.ipAsset.mintAndRegisterIp({
-        spgNftContract: SPGNFTContractAddress,
-        allowDuplicates: false,
-        recipient: address,
+    // const response = await client.ipAsset.mintAndRegisterIp({
+    //     spgNftContract: SPGNFTContractAddress,
+    //     allowDuplicates: false,
+    //     recipient: address,
+    //     ipMetadata: {
+    //         ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+    //         ipMetadataHash: `0x${ipHash}`,
+    //         nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+    //         nftMetadataHash: `0x${nftHash}`,
+    //     },
+    //     txOptions: { waitForTransaction: true },
+    // })
+    // console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
+    // console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
+
+
+    
+    const commercialUse: LicenseTerms = {
+        transferable: true,
+        royaltyPolicy: '0xBe54FB168b3c982b7AaE60dB6CF75Bd8447b390E', // ex. RoyaltyPolicyLAP address
+        defaultMintingFee: BigInt(100), // ex. 100n (costs 100 $WIP to mint)
+        expiration: BigInt(0),
+        commercialUse: true,
+        commercialAttribution: true,
+        commercializerChecker: zeroAddress,
+        commercializerCheckerData: "0x",
+        commercialRevShare: 0,
+        commercialRevCeiling: BigInt(0),
+        derivativesAllowed: false,
+        derivativesAttribution: false,
+        derivativesApproval: false,
+        derivativesReciprocal: false,
+        derivativeRevCeiling: BigInt(0),
+        currency: '0x1514000000000000000000000000000000000000', // ex. $WIP address
+        uri: "https://github.com/piplabs/pil-document/blob/9a1f803fcf8101a8a78f1dcc929e6014e144ab56/off-chain-terms/CommercialUse.json"
+      }
+      
+      const licensingConfig: LicensingConfig = {
+        isSet: false,
+        mintingFee: 0,
+        licensingHook: zeroAddress,
+        hookData: zeroHash,
+        commercialRevShare: 0,
+        disabled: false,
+        expectMinimumGroupRewardShare: 0,
+        expectGroupRewardPool: zeroAddress,
+      };
+      
+      const response = await client.ipAsset.mintAndRegisterIpAssetWithPilTerms({
+        spgNftContract: '0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc',
+        licenseTermsData: [{ terms: commercialUse, licensingConfig }],
+        // set to true to mint ip with same nft metadata
+        allowDuplicates: true,
+        // https://docs.story.foundation/docs/ip-asset#adding-nft--ip-metadata-to-ip-asset
         ipMetadata: {
-            ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
-            ipMetadataHash: `0x${ipHash}`,
-            nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
-            nftMetadataHash: `0x${nftHash}`,
+          ipMetadataURI: `https://ipfs.io/ipfs/${ipIpfsHash}`,
+          ipMetadataHash: `0x${ipHash}`,
+          nftMetadataURI: `https://ipfs.io/ipfs/${nftIpfsHash}`,
+          nftMetadataHash: `0x${nftHash}`,
         },
         txOptions: { waitForTransaction: true },
-    })
-    console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
-    console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
-
-    //licensing module
-    const licenseResponse = await client.license.mintLicenseTokens({
-        licenseTermsId: "1", 
-        licensorIpId: response.ipId!,
-        receiver: address,
-        amount: 1,
-        maxMintingFee: BigInt(0), // disabled
-        maxRevenueShare: 100, // default
-        txOptions: { waitForTransaction: true }
-      });
+      })
       
-      console.log(`License Token minted at transaction hash ${licenseResponse.txHash}, License IDs: ${licenseResponse.licenseTokenIds}`)
+      console.log(`
+        Token ID: ${response.tokenId}, 
+        IPA ID: ${response.ipId}, 
+        License Terms ID: ${response.licenseTermsIds}
+      `)
+
+      console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
+      console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
 
     //dispute module
     const disputeResponse = await client.dispute.raiseDispute({
