@@ -142,6 +142,19 @@ export async function RegisterIP(image : string, address: Address, song: string,
     console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
     console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
 
+    //licensing module
+    const licenseResponse = await client.license.mintLicenseTokens({
+        licenseTermsId: "1", 
+        licensorIpId: response.ipId!,
+        receiver: address,
+        amount: 1,
+        maxMintingFee: BigInt(0), // disabled
+        maxRevenueShare: 100, // default
+        txOptions: { waitForTransaction: true }
+      });
+      
+      console.log(`License Token minted at transaction hash ${licenseResponse.txHash}, License IDs: ${licenseResponse.licenseTokenIds}`)
+
     //dispute module
     const disputeResponse = await client.dispute.raiseDispute({
         targetIpId: response.ipId as Address,
