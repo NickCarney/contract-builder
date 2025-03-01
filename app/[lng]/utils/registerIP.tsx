@@ -6,11 +6,11 @@ import {Address, Hex} from 'viem'
 import { LicenseTerms } from '@story-protocol/core-sdk';
 import { zeroAddress, zeroHash } from 'viem';
 
-// import { PinataSDK } from "pinata-web3";
+import { PinataSDK } from "pinata-web3";
 
-// const pinata = new PinataSDK({
-//   pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
-// });
+const pinata = new PinataSDK({
+  pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
+});
 
 //LicensingConfig type
 export type LicensingConfig = {
@@ -24,30 +24,31 @@ export type LicensingConfig = {
     expectGroupRewardPool: Address;
   };
 
-// async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
-//     return new File([fileData], fileName, { type: fileType });
-//   }
+async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
+    return new File([fileData], fileName, { type: fileType });
+  }
 
-// async function handleFileCreation(filePath: string) {
-// try {
-//     const response = await fetch(filePath);
-//     const fileData = await response.blob();
+async function handleFileCreation(filePath: string) {
+try {
+    filePath='/public/images/combined.png'
+    const response = await fetch(filePath);
+    const fileData = await response.blob();
     
-//     const fileName = 'combined.png';
-//     const fileType = 'image/png';
+    const fileName = 'combined.png';
+    const fileType = 'image/png';
 
-//     const file = await createFileObject(fileData, fileName, fileType);
+    const file = await createFileObject(fileData, fileName, fileType);
     
 
-//     const upload = await pinata.upload.file(file);
-//     if( upload.IpfsHash == undefined){
-//         return "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
-//     }
-//     return "https://ipfs.io/ipfs/"+upload.IpfsHash;
-// } catch (error) {
-//     console.error("Error creating file object:", error);
-// }
-// };
+    const upload = await pinata.upload.file(file);
+    if( upload.IpfsHash == undefined){
+        return "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    }
+    return "https://ipfs.io/ipfs/"+upload.IpfsHash;
+} catch (error) {
+    console.error("Error creating file object:", error);
+}
+};
 //eslint-disable-next-line
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
     console.log("registerIp");
@@ -55,8 +56,8 @@ export async function RegisterIP(image : string, address: Address, song: string,
     //image = process.cwd()+"public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
     //console.log(handleFileCreation);
-    //const imageResult = await handleFileCreation(image);
-    image = "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    const imageResult = await handleFileCreation(image);
+    image = imageResult || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     //console.log(image);
     //console.log(address);
 
