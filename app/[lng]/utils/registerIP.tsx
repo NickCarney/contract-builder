@@ -8,9 +8,8 @@ import path from 'path';
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
-  pinataJwt: process.env.PINATA_JWT,
+  pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
 });
-
 
 async function createFileObject(fileData: Blob | ArrayBuffer, fileName: string, fileType: string): Promise<File> {
     return new File([fileData], fileName, { type: fileType });
@@ -35,7 +34,8 @@ try {
 };
 //eslint-disable-next-line
 export async function RegisterIP(image : string, address: Address, song: string, cid:string, pages: any) {
-    image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    //image = path.join(process.cwd(),"public/images/combined.png") || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
+    image = process.cwd()+"/public/images/combined.png" || "https://ipfs.io/ipfs/bafkreifk35i7knuqklmyz6da7haiuc5tkrbd7g3gekl2ho3gcwb7wpdvzi";
     console.log(image);
     handleFileCreation(image);
     console.log(address);
@@ -141,4 +141,18 @@ export async function RegisterIP(image : string, address: Address, song: string,
     })
     console.log(`Root IPA created at transaction hash ${response.txHash}, IPA ID: ${response.ipId}`)
     console.log(`View on the explorer: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`)
+
+    //dispute module
+    const disputeResponse = await client.dispute.raiseDispute({
+        targetIpId: response.ipId as Address,
+        // NOTE: you must use your own CID here, because every time it is used,
+        // the protocol does not allow you to use it again
+        cid: cid,
+        // you must pick from one of the whitelisted tags here: https://docs.story.foundation/docs/dispute-module#/dispute-tags
+        targetTag: 'IMPROPER_REGISTRATION',
+        bond: 0,
+        liveness: 2592000,
+        txOptions: { waitForTransaction: true },
+    })
+    console.log(`Dispute raised at transaction hash ${disputeResponse.txHash}, Dispute ID: ${disputeResponse.disputeId}`)
 }

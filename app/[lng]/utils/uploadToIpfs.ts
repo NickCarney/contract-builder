@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 
 const pinata = new PinataSDK({
-    pinataJwt: process.env.PINATA_JWT,
+    pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT,
 })
 
 //eslint-disable-next-line
