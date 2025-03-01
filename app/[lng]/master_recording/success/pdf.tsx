@@ -47,6 +47,7 @@ const PDF = (isClicked: boolean) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({ pdfUrl: `https://ipfs.io/ipfs/${cid}` }),
     });
@@ -495,6 +496,7 @@ const PDF = (isClicked: boolean) => {
             method: "POST",
             headers: {
               Authorization: `Bearer ${JWT}`,
+              'Access-Control-Allow-Origin': '*',
             },
             body: data,
           }

@@ -39,7 +39,13 @@ export async function POST(req: NextRequest) {
     const tempPdfName = `${uuidv4()}.pdf`;
     const tempPdfPath = path.join("/tmp", tempPdfName); // Use system temp folder
 
-    const response = await fetch(pdfUrl);
+    const response = await fetch(pdfUrl, {
+
+      method: 'GET',
+    
+      mode: 'cors' // Enables CORS for this request
+    
+    })
     if (!response.ok) {
       throw new Error(`Failed to fetch PDF: ${response.statusText}`);
     }
