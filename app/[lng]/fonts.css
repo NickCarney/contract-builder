@@ -3,6 +3,10 @@
   src: url("./fonts/RubikMonoOne.ttf") format("truetype");
 }
 @font-face {
+  font-family: "Rubik";
+  src: url("./fonts/Rubik-Medium.ttf") format("truetype");
+}
+@font-face {
   font-family: "ShareTechMono";
   src: url("./fonts/ShareTechMono.ttf") format("truetype");
 }
