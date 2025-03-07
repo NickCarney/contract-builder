@@ -80,7 +80,7 @@ const ContractBuilder2 = ({
           </h3>
           <p className="text-sm sm:text-base font-share text-[22px]">
             {t("collaborationStatement")}{" "}
-            <span className="text-[#AC4444] font-rubik text-[20px]">
+            <span className="text-[#AC4444] font-rubik_medium text-[20px]">
               {song ? song : " "}
             </span>
             .

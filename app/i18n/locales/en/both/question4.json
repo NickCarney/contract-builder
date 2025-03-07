@@ -11,11 +11,5 @@
   "linkConfused": "Confused with this bit too? read here.",
   "buttonSubmit": "Submit",
   "buttonBack": "Back",
-  "buttonSkip":"Skip",
-
-  "popups": {
-    "popup1": "Voting ensures that each business decision is consulted with all of the copyright owners. Designating an administrator ensures faster decision making, but less consultation with copyright owners. However, administrators also have responsibilities and a duty to properly represent the interests of the copyright owners.",
-    "popup2": "Still not clear about voting? read here.",
-    "popup3": "Still not clear about designating an admin? read here."
-  }
+  "buttonSkip":"Skip"
 }

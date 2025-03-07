@@ -11,11 +11,5 @@
   "skipDescription": "Puedes escoger la opción de saltar si no necesitas establacer gobernanza en este momento.",
   "confusedHelp": "Lee aquí si necesitas ayuda.",
   "submitButton": "Siguiente",
-  "backButton": "Atrás",
-
-  "popups": {
-    "votingInfo": "Votar garantiza que cada decisión comercial se consulte con todos los propietarios de derechos de autor. Designar un administrador asegura una toma de decisiones más rápida, pero con menos consulta a los propietarios de derechos de autor. Sin embargo, los administradores también tienen responsabilidades y el deber de representar adecuadamente los intereses de los propietarios de derechos de autor.",
-    "moreInfoVoting": "Más acerca de gobernanza por votación aquí",
-    "moreInfoAdmin": "Más acerca de administración de derechos aquí"
-  }
+  "backButton": "Atrás"
 }

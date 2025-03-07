@@ -11,10 +11,5 @@
   "skipDescription": "Your contract has yet to be completed. Continue to fill out the decision tree.",
   "confusedHelp": "Confused with this bit too? read here.",
   "submitButton": "Submit",
-  "backButton": "Back",
-  "popups": {
-    "votingInfo": "Voting ensures that each business decision is consulted with all of the copyright owners. Designating an administrator ensures faster decision making, but less consultation with copyright owners. However, administrators also have responsibilities and a duty to properly represent the interests of the copyright owners.",
-    "moreInfoVoting": "Still not clear about voting? read here.",
-    "moreInfoAdmin": "Still not clear about designating an admin? read here."
-  }
+  "backButton": "Back"
 }
