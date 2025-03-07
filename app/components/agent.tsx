@@ -52,7 +52,7 @@ export default function Agent({
                         setIsOpen(false);
                     }, 200);
                     }}
-                    className="popup_button text-white hover:text-gray-300 absolute top-0 right-0"
+                    className=" text-white hover:text-gray-300 absolute top-0 right-0 border-0"
                 >
                     &times;
                  </button>
