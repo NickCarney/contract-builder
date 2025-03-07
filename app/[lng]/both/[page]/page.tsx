@@ -51,7 +51,8 @@ const DynamicPage = ({
   const { t } = useTranslation(lng, "both/dynamic");
 
   useEffect(() => {
-    resetPages(0); // Reset all stored info
+    
+    resetPages(pageNumber); // Reset all stored info
   }, [pageNumber, resetPages]);
 
   // Update Zustand store only if inputs change
@@ -150,7 +151,13 @@ const DynamicPage = ({
 
   const handleBackPage = () => {
     const previousPage = parseInt(page) - 1;
-    if (previousPage > 0) {
+    if(previousPage == 1){
+      setSplitTotal(0);
+      router.push(
+        `/musical_work/1?pageCount=${pageCount}&split=${0}`
+      );
+    }
+    else if (previousPage > 0) {
       setSplitTotal(splitTotal - split);
       router.push(
         `/both/${previousPage}?pageCount=${pageCount}&split=${splitTotal}`
