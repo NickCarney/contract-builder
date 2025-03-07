@@ -103,8 +103,8 @@ const ContractBuilder2 = ({
           </h3>
           <p className="text-sm sm:text-base font-roboto">
             {t("musicWorkIdentificationText")}
-            {" "}
-            <span className="text-[#AC4444] font-rubik">
+            {" "}&quot;
+            <span className="text-[#AC4444] font-rubik_medium">
               {song ? song : " "}
             </span>
            &quot;.
@@ -116,7 +116,7 @@ const ContractBuilder2 = ({
           <p className="text-sm sm:text-base font-roboto">
             {t("masterRecordingIdentificationText")}
             {" "}
-            <span className="text-[#AC4444] font-rubik">
+            <span className="text-[#AC4444] font-rubik_medium">
               {recording ? recording : " "}
             </span>
             {t("masterRecordingClauseText")}

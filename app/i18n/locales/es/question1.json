@@ -13,13 +13,6 @@
   "id_songwriting": "Composicion Musical,",
   "id_master_recording": "Grabacion Master,",
   "id_both": "Composicion Musical y Grabacion Master,",
-  "popups": {
-    "popup_intro": "En la industria musical, existen dos tipos principales de obras: Composiciones Musicales y Grabaciones de Sonido. Estos dos tipos de obras tienen sus propios derechos de autor.",
-    "popup_composition_rights": "Derechos de Autor en la Composición Musical (Derechos de Publicación o Derechos de Composición):",
-    "popup_composition_details": " Se refieren a la \"canción\" o la composición subyacente: la letra y la melodía de una canción, independientemente de una grabación en particular. Estos derechos se dividen entre el compositor (o autor) y el editor musical. El editor gestiona la composición del autor otorgando licencias para su uso, recaudando regalías y asegurando que se le dé el debido crédito. Los componentes clave de los derechos de publicación incluyen los derechos de ejecución, derechos mecánicos y derechos de sincronización (para uso en películas, televisión, etc.).",
-    "popup_master_rights": "Derechos de Autor en las Grabaciones de Sonido (Derechos de MASTER):",
-    "popup_master_details": " Se refieren a la propiedad de una grabación particular de una interpretación de una canción. Quien posee los derechos de master controla el uso, distribución, reproducción y ejecución de esa grabación específica. Estos derechos suelen pertenecer a la discográfica o al artista que financió la producción de la grabación, aunque pueden ser vendidos o licenciados. Ambos derechos son cruciales para monetizar y proteger legalmente la música. Los derechos de autor controlan el uso de una grabación específica, mientras que los derechos de publicación controlan el uso de la composición de la canción."
-  },
   "disclaimer_both": "Descargo de responsabilidad para el Constructor de Contratos de la Ruta AMBOS",
   "important_notice": "Aviso Importante: Por favor, lea antes de continuar",
   "both_track_intro": "El constructor de contratos de la Ruta AMBOS está diseñado exclusivamente para acuerdos en los que los metadatos de los derechos de composición (derechos de autor) y los derechos de grabación maestra (interpretación grabada) son idénticos. Esto significa que:",

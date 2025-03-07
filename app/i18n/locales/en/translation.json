@@ -16,21 +16,6 @@
   "music": "Music",
   "proceed-button": "Proceed",
   "agent":"If confused, ask our music industry agent",
-
-  "popups": {
-    "self-publishing-distribution-info": "Self-publishing and self-distributing your music means that you, as an artist or as a part of a group of creatives, take full control over the song writing, production, release, and distribution of your work without relying on traditional publishers or music labels. Here’s a technical breakdown of what that entails:",
-    "self-publishing-title": "1. Self-Publishing",
-    "what-is-publishing": "What is Publishing?",
-    "publishing-info": "Publishing refers to the rights management of your music. When you write or compose a song, you own the copyright to that piece of music. Copyright ensures that you are paid when your music is used commercially, such as when it is streamed, played on the radio, or used in TV or film.",
-    "self-distribution-title": "2. Self-Distribution",
-    "what-is-distribution": "What is Distribution?",
-    "distribution-info": "Distribution is the process of getting your recorded music onto various platforms, both digital (streaming services, downloads) physical (CDs, vinyl, etc.), or in NFT format.",
-    "legal-responsibilities-title": "3. Legal Responsibilities",
-    "contracts-licensing-info": "Contracts & Licensing: As a self-published and self-distributed artist, you must be familiar with basic music contracts, licensing agreements, and intellectual property laws.",
-    "copyright-registration-info": "Copyright Registration: Although you automatically own the copyright to your music upon creation, registering it with the U.S. Copyright Office (or the equivalent in your country) provides additional legal protection.",
-    "summary-title": "Summary",
-    "self-publishing-distribution-summary": "By self-publishing and self-distributing, you keep all the creative and financial control over your music but take on the added responsibility of managing rights, royalties, promotion, distribution logistics and financial distribution. You need to be well-organized and either learn how to handle these aspects, hire professionals or use online tools to assist you."
-  },
   "disclaimer1": "DISCLAIMER: Our intention is to provide a self-help platform. We provide a draft of a contract that should be meticulously reviewed by each of the parties willing to reach an agreement. The information provided in this service is provided for your private use and does not constitute legal advice. We do not review the accuracy or legal sufficiency of the information you provide to us, draw legal conclusions, provide opinions on its use, or apply the law to the facts of your situation.",
   "disclaimer2": "If you do not understand the terms or consequences of the draft we provide you, or need legal advice for a specific issue, we recommend that you consult with a licensed attorney. The draft provided by this service does not substitute for legal advice from a qualified attorney licensed to practice in an appropriate jurisdiction.",
   "disclaimer3": "This draft is limited to general principles of copyright law. If you are interested in learning more about how the MESA system can help you, please contact us at contratos@mesawallet.io",

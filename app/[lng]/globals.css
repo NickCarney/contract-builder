@@ -17,8 +17,7 @@ main {
 }
 
 /* @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"); */
-
-@import url("./fonts.css");
+@import url("./public/fonts.css");
 html {
   background-color: black;
   color: white;

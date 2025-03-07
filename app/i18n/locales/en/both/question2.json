@@ -11,9 +11,5 @@
   "masterRecordingIdentificationText": "The contracting parties have collaborated in the recording and production of the sound recording titled \"",
   "musicWorkClauseContinuation": "",
   "nextButton": "Submit",
-  "backButton": "Back",
-
-  "popups": {
-    "songNameImportance": "Specifying the name of a song or musical work in contracts, particularly when a master recording is also involved, is crucial for ensuring clarity and preventing confusion. Multiple versions of a song, such as remixes, live performances, or covers, can exist, and without clear identification, it may lead to disputes over royalties, rights, and ownership. By defining the exact version, the contract ensures proper royalty allocation and protects the rights of creators and performers."
-  }
+  "backButton": "Back"
 }
