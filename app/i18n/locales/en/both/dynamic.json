@@ -36,5 +36,6 @@
   "idRight":"ID # ",
   "ipiRight":"IPI #",
   "prodRight":"Producer",
+  "addressRight": "Address",
   "back":"Back"
 }

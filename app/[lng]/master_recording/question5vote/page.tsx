@@ -69,13 +69,6 @@ const ContractBuilder5Vote = ({
         </div>
       </main>
       <footer className="flex flex-col gap-6 row-start-3">
-        <a
-          className="text-[#3167B4] underline underline-offset-4 text-sm sm:text-base mt-4"
-          href="#"
-          onClick={() => push("/popups/moreInfoVoting")}
-        >
-          {t("moreInfoLink")}
-        </a>
         <div className="inline-flex relative bottom-0 left-0 right-0 justify-between sm:justify-normal sm:gap-20 gap-5">
           <button
             onClick={() => push("/master_recording/question4")}

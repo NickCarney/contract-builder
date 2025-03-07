@@ -8,7 +8,7 @@ import { languages } from "../i18n/settings";
 import { useTranslation } from "../i18n";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-//import Agent from "../components/agent";
+import Agent from "../components/agent";
 
 import { Providers } from './providers'; 
 
@@ -32,6 +32,7 @@ export default async function RootLayout({
 }) {
   const { lng } = await params; // eslint-disable-line react-hooks/rules-of-hooks
   const { t } = await useTranslation(lng); // eslint-disable-line react-hooks/rules-of-hooks
+
 
   return (
     <html lang={lng} dir={dir(lng)}>
@@ -57,14 +58,17 @@ export default async function RootLayout({
         <Providers>{children}</Providers>
         <SpeedInsights />
         <Analytics />
+        <div className="relative">
+        <Agent params={{ lng: lng }}/>
+        </div>
         <Image
           src={mesaImage}
           width={95}
           height={30}
           alt="M"
-          className="relative bottom-0 left-1/2 transform -translate-x-1/2"
+          className="relative left-1/2 transform -translate-x-1/2"
         ></Image>
-        {/* <Agent/> */}
+        
       </body>
     </html>
   );

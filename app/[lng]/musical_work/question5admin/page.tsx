@@ -60,13 +60,6 @@ const ContractBuilder5Admin = ({
       </main>
 
       <footer className="flex flex-col gap-6 row-start-3">
-        <a
-          className="text-[#3167B4] underline underline-offset-4 text-sm sm:text-base py-5 pl-4"
-          href="#"
-          onClick={() => push("/popups/moreInfoAdmin")}
-        >
-          {t("needHelp")}
-        </a>
         <div className="inline-flex relative bottom-0 left-0 right-0 justify-between sm:justify-normal sm:gap-20 gap-5 sm:pl-4">
           <button
             onClick={() => push("/musical_work/question4")}

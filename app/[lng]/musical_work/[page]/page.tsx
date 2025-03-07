@@ -305,50 +305,50 @@ const DynamicPage = ({
           <h3 className=" mb-2 font-roboto_bold text-[0px] sm:text-base">{t("musicWorkIdentification")}</h3>
           <p className="mb-4 font-roboto_light text-[0px] sm:text-base">
             {t("acknowledgementMessage")}
-            <span className="text-[#AC4444] font-rubik"> {song}</span>
+            <span className="text-[#AC4444] font-rubik_medium"> {song}</span>
           </p>
           <h3 className=" text-[0px] sm:text-base mb-2 font-roboto_bold">
             {t("contributorLabel")} {pageNumber}:
           </h3>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("legalNameSummary")}:{" "}
-            <span className="text-[#AC4444] font-rubik">{legalName}</span>
+            <span className="text-[#AC4444] font-rubik_medium">{legalName}</span>
           </p>
           
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("emailSummary")}:{" "}
-            <span className="text-[#AC4444] font-rubik">{email}</span>
+            <span className="text-[#AC4444] font-rubik_medium">{email}</span>
           </p>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("contributionSummary")}:{" "}
-            <span className="text-[#AC4444] font-rubik ">
+            <span className="text-[#AC4444] font-rubik_medium ">
               {contributorType}
             </span>
           </p>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("ownershipPercentageSummary")}:{" "}
-            <span className="text-[#AC4444] font-rubik" id="split"></span>
+            <span className="text-[#AC4444] font-rubik_medium" id="split"></span>
           </p>
           
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("ipi")}:{" "}
-            <span className="text-[#AC4444] font-rubik" id="ipi">{ipi}</span>
+            <span className="text-[#AC4444] font-rubik_medium" id="ipi">{ipi}</span>
           </p>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("aka")}:{" "}
-            <span className="text-[#AC4444] font-rubik">{aka}</span>
+            <span className="text-[#AC4444] font-rubik_medium">{aka}</span>
           </p>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("id")}:{" "}
-            <span className="text-[#AC4444] font-rubik" id="id">{id}</span>
+            <span className="text-[#AC4444] font-rubik_medium" id="id">{id}</span>
           </p>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("publisher")}:{" "}
-            <span className="text-[#AC4444] font-rubik" id="producer">{producer}</span>
+            <span className="text-[#AC4444] font-rubik_medium" id="producer">{producer}</span>
           </p>
           <p className=" text-[0px] sm:text-base font-roboto_light">
             {t("address")}:{" "}
-            <span className="text-[#AC4444] font-rubik" id="address">{address}</span>
+            <span className="text-[#AC4444] font-rubik_medium" id="address">{address}</span>
           </p>
         </div>
       </main>

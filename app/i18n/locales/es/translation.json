@@ -12,8 +12,9 @@
   "get-started-button": "EMPIEZA",
   "contract-builder": "Constructor de contratos",
   "control-your": "Controla tu",
-  "music": "musica",
+  "music": "Musica",
   "proceed-button": "Proceder",
+  "agent":"Si necesitas ayuda, pregúntale a nuestra IA de la industria musical",
 
   "popups": {
     "self-publishing-distribution-info": "Publicar y Distribuir tu música significa que tú, como artista o como parte de un grupo de creativos, tomas control total sobre la composición, producción, lanzamiento y distribución de tu trabajo sin depender de editores o música tradicionales o sellos. Aquí hay un desglose técnico de lo que eso implica:",

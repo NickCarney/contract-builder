@@ -4,7 +4,6 @@ import React, { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import useQuestion4 from "../../store/useQuestion4";
 import { useTranslation } from "@/app/i18n/client";
-import Popup from "reactjs-popup";
 
 const ContractBuilder4 = ({
   params,
@@ -14,8 +13,6 @@ const ContractBuilder4 = ({
   };
 }) => {
   const { push } = useRouter();
-
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const { lng } = params;
   const { t } = useTranslation(lng, "master_recording/question4");
@@ -89,57 +86,6 @@ const ContractBuilder4 = ({
         </div>
       </main>
       <footer className="flex flex-col gap-6 row-start-3">
-        {!isOpen && (
-          <Popup
-            trigger={
-              <a className="text-[#3167B4] underline underline-offset-4 text-sm sm:text-base m-auto sm:m-0 pb-5">
-                {t("confused")}
-              </a>
-            }
-            position="center center"
-            modal
-            nested
-            className="popup"
-            closeOnDocumentClick
-          >
-            <div
-              className="modal border-2 border-white"
-              style={{
-                height: "80vh",
-                width: "90vw",
-                maxWidth: "600px",
-                overflowY: "scroll",
-              }}
-            >
-              <p>{t("popups.votingExplanation")}</p>
-              <br />
-              <a
-                className="items-center gap-2 hover:underline hover:underline-offset-4"
-                onClick={() => push("/popups/moreInfoVoting")}
-              >
-                {t("popups.moreInfoVoting")}
-              </a>
-              <br />
-              <a
-                className="items-center gap-2 hover:underline hover:underline-offset-4"
-                onClick={() => push("/popups/moreInfoAdmin")}
-              >
-                {t("popups.moreInfoAdmin")}
-              </a>
-              <button
-                onClick={() => {
-                  setIsOpen(true);
-                  setTimeout(() => {
-                    setIsOpen(false);
-                  }, 200);
-                }}
-                className="popup_button text-white hover:text-gray-300"
-              >
-                &times;
-              </button>
-            </div>
-          </Popup>
-        )}
         <div className="inline-flex relative bottom-0 left-0 right-0 justify-between sm:justify-normal sm:gap-20 gap-5">
           <button
             onClick={() =>

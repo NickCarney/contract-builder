@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         rubik: ["RubikMonoOne", "sans-serif"],
+        rubik_medium: ["Rubik Medium", "sans-serif"],
         share: ["ShareTechMono", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
         roboto_medium: ["Roboto Medium", "sans-serif"],

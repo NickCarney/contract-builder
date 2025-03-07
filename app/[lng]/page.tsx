@@ -17,10 +17,10 @@ export default function Home({
   let { lng } = params;
   //if (languages.indexOf(lng) < 0) lng = fallbackLng;
   const { push } = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
-  const [isOpen4, setIsOpen4] = useState(false);
+  // const [isOpen4, setIsOpen4] = useState(false);
   const [lang, setLang] = useState(lng);
   const [jurisdiction, setJurisdiction] = useState('');
 
@@ -219,44 +219,6 @@ export default function Home({
 
 
                   <div className="flex justify-end">
-                    {!isOpen4 && (
-                              <Popup
-                                trigger={
-                                  <a className="mx-auto underline underline-offset-4 pb-5 ">
-                                    {t("read-here")}
-                                  </a>
-                                }
-                                position="center center"
-                                modal
-                                nested
-                                className="popup"
-                                closeOnDocumentClick
-                              >
-                                <div
-                                  className="modal border-2 border-white"
-                                  style={{
-                                    height: "80vh",
-                                    width: "90vw",
-                                    maxWidth: "600px",
-                                    overflowY: "scroll",
-                                  }}
-                                >
-                                  <p className="pt-20">{t("more-info")}</p>
-                                  <button
-                                    onClick={() => {
-                                      setIsOpen4(true);
-                                      setTimeout(() => {
-                                        setIsOpen4(false);
-                                      }, 200);
-                                    }}
-                                    className="popup_button text-white hover:text-gray-300"
-                                  >
-                                    &times;
-                                  </button>
-                                </div>
-                              </Popup>
-                            )}
-
                       <button
                         onClick={handleSubmit}
                         className="border-none bg-[#82828270] absolute right-7 bottom-7"
@@ -266,77 +228,6 @@ export default function Home({
                     </div>
                 </main>
               </div>
-            </div>
-          </Popup>
-        )}
-
-
-
-        {!isOpen && (
-          <Popup
-            trigger={
-              <a className="font-share text-2xl text-link underline text-center text-[18px] pt-2">
-                {t("confused-link")}
-              </a>
-            }
-            position="center center"
-            modal
-            nested
-            className="popup"
-            closeOnDocumentClick
-          >
-            <div
-              className="modal border-2 border-white"
-              style={{
-                height: "80vh",
-                width: "90vw",
-                maxWidth: "600px",
-                overflowY: "scroll",
-              }}
-            >
-              <p>{t("popups.self-publishing-distribution-info")}</p>
-              <ul>
-                <li>
-                  {t("popups.self-publishing-title")}
-                  <br />
-                  {t("popups.what-is-publishing")}
-                  <br />
-                  {t("popups.publishing-info")}
-                </li>
-                <br />
-                <li>
-                  {t("popups.self-distribution-title")}
-                  <br />
-                  {t("popups.what-is-distribution")}
-                  <br />
-                  {t("popups.distribution-info")}
-                </li>
-                <br />
-                <li>
-                  {t("popups.legal-responsibilities-title")}
-                  <br />
-                  <ol className="list-disc pl-5">
-                    <li>{t("popups.contracts-licensing-info")}</li>
-                    <br />
-                    <li>{t("popups.copyright-registration-info")}</li>
-                  </ol>
-                  <br />
-                </li>
-              </ul>
-              {t("popups.summary-title")}
-              <br />
-              <p>{t("popups.self-publishing-distribution-summary")}</p>
-              <button
-                onClick={() => {
-                  setIsOpen(true);
-                  setTimeout(() => {
-                    setIsOpen(false);
-                  }, 200);
-                }}
-                className="popup_button text-white hover:text-gray-300"
-              >
-                &times;
-              </button>
             </div>
           </Popup>
         )}

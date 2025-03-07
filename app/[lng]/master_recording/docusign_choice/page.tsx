@@ -11,8 +11,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import Popup from "reactjs-popup";
 import { useState } from "react";
 
-//import { Checkout, CheckoutButton, CheckoutStatus } from '@coinbase/onchainkit/checkout';
-
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const DocusignChoice = ({
@@ -104,12 +102,6 @@ const DocusignChoice = ({
             {t("5")}
           </button>
           <br />
-          {/* <Checkout productId='bc349f65-4114-43a3-8950-1b1acfd99c43' > 
-            <CheckoutButton text="Pay with crypto" className="size-[5%] w-fit mx-auto"/>
-            <CheckoutStatus />
-          </Checkout>
-          <br/> */}
-
           {!isOpen2 && (
             <Popup
               trigger={

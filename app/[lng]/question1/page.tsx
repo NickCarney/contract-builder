@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useQuestion1 from "../store/useQuestion1";
 import { useTranslation } from "@/app/i18n/client";
-import Popup from "reactjs-popup";
 
 function ContractBuilder1({
   params,
@@ -17,8 +16,6 @@ function ContractBuilder1({
   const { lng } = params;
   const { t } = useTranslation(lng, "question1");
   const { push } = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -85,96 +82,6 @@ function ContractBuilder1({
               />
               {t("option_both")}
 
-              {!isOpen2 && (
-                <Popup
-                  trigger={
-                    <a className="items-center gap-2 underline underline-offset-4 font-share">
-                      {t("read_more")}
-                    </a>
-                  }
-                  position="center center"
-                  modal
-                  nested
-                  className="popup"
-                  closeOnDocumentClick
-                >
-                  <div
-                    className="modal border-2 border-white"
-                    style={{
-                      height: "80vh",
-                      width: "90vw",
-                      maxWidth: "600px",
-                      overflowY: "scroll",
-                    }}
-                  >
-                    <div className=" p-4 sm:p-8 flex flex-col justify-between">
-                      <main className="flex flex-col gap-6 sm:gap-8">
-                        <p className="text-sm sm:text-base space-y-4 font-roboto">
-                          {t("disclaimer_both")}
-                          <br />
-                          {t("important_notice")}
-                          <br />
-                          {t("both_track_intro")}
-                          <br />
-                          <ol className="list-decimal list-inside">
-                            <li>
-                              {t("ownership_structures")}
-                              <br />
-                              <span>{t("ownership_details")}</span>
-                            </li>
-                            <li>
-                              {t("participants")}
-                              <br />
-                              <span>{t("participants_details")}</span>
-                            </li>
-                          </ol>
-                          {t("why_important")}
-                          <br />
-                          {t("metadata_details")}
-                          <br />
-                          <ul className="list-disc list-inside">
-                            <li>
-                              {t("ownership_percentages")}
-                              <br />
-                            </li>
-                            <li>
-                              {t("participant_roles")}
-                              <br />
-                            </li>
-                            <li>
-                              {t("copyright_registrations")}
-                              <br />
-                            </li>
-                            <li>
-                              {t("licenses_royalties")}
-                              <br />
-                            </li>
-                          </ul>
-                          {t("both_track_summary")}
-                          <br />
-                          {t("warning")}
-                          <br />
-                          {t("consult_legal")}
-                          <br />
-                          {t("acknowledgement")}
-                          <br />
-                        </p>
-                        <button
-                          onClick={() => {
-                            setIsOpen2(true);
-                            setTimeout(() => {
-                              setIsOpen2(false);
-                            }, 200);
-                          }}
-                          className="popup_button text-white hover:text-gray-300"
-                        >
-                          &times;
-                        </button>
-                      </main>
-                    </div>
-                  </div>
-                </Popup>
-              )}
             </label>
           </form>
         </div>
@@ -194,54 +101,7 @@ function ContractBuilder1({
         </div>
       </main>
       <footer className="flex flex-col gap-6 row-start-3">
-        {!isOpen && (
-          <Popup
-            trigger={
-              <a className="items-center gap-2 underline underline-offset-4 p-4 sm:mx-0 pb-5">
-                {t("confusion_help")}
-              </a>
-            }
-            position="center center"
-            modal
-            nested
-            className="popup"
-            closeOnDocumentClick
-          >
-            <div
-              className="modal border-2 border-white"
-              style={{
-                height: "80vh",
-                width: "90vw",
-                maxWidth: "600px",
-                overflowY: "scroll",
-              }}
-            >
-              <p className="py-5">{t("popups.popup_intro")}</p>
-              <ol>
-                <li className="py-5">
-                  {" "}
-                  <b>{t("popups.popup_composition_rights")}</b> {t("popups.popup_composition_details")}
-                </li>
-                <li className="py-5">
-                  <b>{t("popups.popup_master_rights")}</b> {t("popups.popup_master_details")}
-                </li>
-              </ol>
-              <p>{t("popups.popup_summary")}</p>
-              <button
-                onClick={() => {
-                  setIsOpen(true);
-                  setTimeout(() => {
-                    setIsOpen(false);
-                  }, 200);
-                }}
-                className="popup_button text-white hover:text-gray-300"
-              >
-                &times;
-              </button>
-            </div>
-          </Popup>
-        )}
-
+        
         <div className="inline-flex relative bottom-0 left-0 right-0 justify-between sm:justify-normal sm:gap-20 gap-5 ">
           <button
             onClick={() => push("/")}

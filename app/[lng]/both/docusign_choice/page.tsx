@@ -11,8 +11,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import Popup from "reactjs-popup";
 import { useState } from "react";
 
-//import { Checkout, CheckoutButton, CheckoutStatus } from '@coinbase/onchainkit/checkout';
-
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const DocusignChoice = ({

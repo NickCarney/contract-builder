@@ -36,5 +36,6 @@
   "back": "Atrás",
   "idRight":"# identificación",
   "ipiRight":"#IPI",
-  "prodRight":"Productor"
+  "prodRight":"Productor",
+  "addressRight":"Dirección de residencia"
 }
