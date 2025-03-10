@@ -1,8 +1,10 @@
 "use client"
 
 import { useState } from "react";
-import { useTranslation } from "../i18n/client";
+//import { useTranslation } from "../i18n/client";
 import Popup from "reactjs-popup";
+import Image from "next/image";
+import brainImage from "../[lng]/public/images/brain.png"
 
 export default function Agent({
     params,
@@ -11,8 +13,8 @@ export default function Agent({
       lng: string;
     };
   }){
-    const { lng } = params;
-    const { t } = useTranslation(lng);
+    //const { lng } = params;
+    //const { t } = useTranslation(lng);
     const [isOpen, setIsOpen] = useState(false);
 
 
@@ -21,8 +23,8 @@ export default function Agent({
             {!isOpen && (
                 <Popup
                 trigger={
-                    <a className="font-share underline relative content-center sm:absolute left-[5%] sm:left-[60%] bottom-0">
-                    {t("agent")}
+                    <a className="font-share underline relative content-center sm:absolute bottom-[3%] right-[3%]">
+                    <Image src={brainImage} width={60} height={20} alt="?"></Image>
                     </a>
                 }
                 position="top right"
@@ -33,7 +35,7 @@ export default function Agent({
                     <div
                         className="modal border-2 border-white"
                         style={{
-                        height: "70vh",
+                        height: "80vh",
                         maxHeight: "800px",
                         width: "90vw",
                         maxWidth: "400px",
