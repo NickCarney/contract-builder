@@ -7,7 +7,7 @@ import Image from "next/image";
 import brainImage from "../[lng]/public/images/brain.png"
 
 export default function Agent({
-    params,
+    //params,
   }: {
     params: {
       lng: string;
