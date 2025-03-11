@@ -587,6 +587,7 @@ const PDF = (isClicked: boolean) => {
               address: addresses,
               ids: ids,
               publishers: publishers,
+              song: song,
             },
           ]);
 
