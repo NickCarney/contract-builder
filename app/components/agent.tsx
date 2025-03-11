@@ -1,20 +1,20 @@
 "use client"
 
 import { useState } from "react";
-//import { useTranslation } from "../i18n/client";
+import { useTranslation } from "../i18n/client";
 import Popup from "reactjs-popup";
-import Image from "next/image";
-import brainImage from "../[lng]/public/images/brain.png"
+// import Image from "next/image";
+// import brainImage from "../[lng]/public/images/brain.png"
 
 export default function Agent({
-    //params,
+    params,
   }: {
     params: {
       lng: string;
     };
   }){
-    //const { lng } = params;
-    //const { t } = useTranslation(lng);
+    const { lng } = params;
+    const { t } = useTranslation(lng);
     const [isOpen, setIsOpen] = useState(false);
 
 
@@ -24,7 +24,8 @@ export default function Agent({
                 <Popup
                 trigger={
                     <a className="font-share underline relative content-center sm:absolute bottom-[3%] right-[3%]">
-                    <Image src={brainImage} width={60} height={20} alt="?"></Image>
+                    {/* <Image src={brainImage} width={60} height={20} alt="?"></Image> */}
+                    {t("agent")}
                     </a>
                 }
                 position="top right"
