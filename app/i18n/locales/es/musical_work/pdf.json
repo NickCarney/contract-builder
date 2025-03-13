@@ -7,7 +7,7 @@
   "emailAddress": "Dirección de Correo Electrónico: {{email}}",
   "contributionType": "Contribución (Letra, música o ambas): {{contributorType}}",
   "ownershipPercentage": "Porcentaje de propiedad: {{split}}%",
-  "aka":"AKA: {{aka}}",
+  "aka":"Nombre Artistico: {{aka}}",
   "ipi":"# IPI: {{ipi}}",
   "address":"Dirección de residencia: {{address}}",
   "id":"# ID: {{idNum}}",

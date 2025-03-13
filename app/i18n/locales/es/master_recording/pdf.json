@@ -15,7 +15,7 @@
   "email_address": "Dirección de Correo Electrónico: {{email}}",
   "contribution_type": "Contribución: {{contributorType}}",
   "ownership_percentage": "Porcentaje de propiedad: {{split}}%",
-  "aka":"AKA: {{aka}}",
+  "aka":"Nombre Artistico: {{aka}}",
   "ipi":"# IPI: {{ipi}}",
   "address":"Dirección de residencia: {{address}}",
   "id":"# ID: {{idNum}}",

@@ -13,7 +13,7 @@
     "9":"Email Address: {{email}}",
     "10":"Contribution: {{contributorType}}",
     "11":"Musical Work and Master Recording Ownership Percentage: {{split}}%",
-    "aka":"AKA: {{aka}}",
+    "aka":"Artistic Name: {{aka}}",
     "ipi":"IPI #: {{ipi}}",
     "address":"Address: {{address}}",
     "id":"ID #: {{idNum}}",
