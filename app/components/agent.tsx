@@ -39,7 +39,7 @@ export default function Agent({
                         height: "80vh",
                         maxHeight: "800px",
                         width: "90vw",
-                        maxWidth: "550px",
+                        maxWidth: "90vw",
                         overflowY: "scroll",
                         }}
                     >
