@@ -11,6 +11,5 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 }) => (
   <div>
     <p>A contract has been created for the song: {songName}!</p>
-    <p>The cid is {cid}</p>
   </div>
 );
