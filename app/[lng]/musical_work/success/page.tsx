@@ -40,7 +40,7 @@ const Success = ({
     }
   }, []);
 
-  const sendEmail = async (songName: string) => {
+  const sendEmail = async (songName: string, cid:string) => {
     try {
       const response = await fetch(`/${lng}/api/sendFree`, {
         method: "POST",
@@ -68,7 +68,7 @@ const Success = ({
   const handleFreeDownload = () => {
     downloadUnsignedFalse();
     cid = cid;
-    sendEmail(songName);
+    sendEmail(songName, cid);
     document.getElementById("ipfs")!.innerText = "View contract on IPFS";
   };
 

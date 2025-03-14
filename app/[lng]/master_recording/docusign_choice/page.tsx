@@ -50,11 +50,12 @@ const DocusignChoice = ({
       method: "POST",
     });
     const data = await response.json();
+    downloadUnsignedTrue();
     if (data.url) {
       push(data.url);
     }
     //sendEmail(songName);
-    downloadUnsignedTrue();
+    
   };
 
   return (

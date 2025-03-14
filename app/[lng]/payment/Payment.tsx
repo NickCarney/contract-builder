@@ -32,7 +32,7 @@ const Payment = ({
   const [message, setMessage] = useState("");
 
 
-  const sendEmail = async (songName: string) => {
+  const sendEmail = async (songName: string, cid:string) => {
     try {
       const response = await fetch(`/${lng}/api/sendPaid`, {
         method: "POST",
@@ -60,7 +60,7 @@ const Payment = ({
   useEffect(() => {
     if (paid === "true") {
       setMessage(t("1"));
-      sendEmail(song);
+      sendEmail(song, cid);
     } else {
       setMessage(t("2"));
     }
