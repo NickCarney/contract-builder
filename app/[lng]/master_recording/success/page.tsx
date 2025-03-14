@@ -73,6 +73,7 @@ const Success = ({
   };
 
   const handleDocusign = () => {
+    downloadUnsignedFalse();
     router.push(`/${lng}/master_recording/docusign_choice`);
     //downloadUnsignedTrue();
   };

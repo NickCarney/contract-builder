@@ -73,6 +73,7 @@ const Success = ({
   };
 
   const handleDocusign = () => {
+    downloadUnsignedFalse();
     router.push(`/${lng}/musical_work/docusign_choice`);
     //downloadUnsignedTrue();
   };

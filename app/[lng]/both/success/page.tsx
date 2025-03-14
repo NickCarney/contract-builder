@@ -73,6 +73,7 @@ const Success = ({
   };
 
   const handleDocusign = () => {
+    downloadUnsignedFalse();
     router.push(`/${lng}/both/docusign_choice`);
     //downloadUnsignedTrue();
   };
