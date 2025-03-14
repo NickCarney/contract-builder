@@ -7,7 +7,6 @@ interface EmailTemplateProps {
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   songName,
-  cid,
 }) => (
   <div>
     <p>A contract has been created for the song: {songName}!</p>
