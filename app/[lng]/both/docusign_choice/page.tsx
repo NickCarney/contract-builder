@@ -6,7 +6,7 @@ import { useTranslation } from "@/app/i18n/client";
 import Image from "next/image";
 import docusignImage from "../../public/images/docusign.png";
 import useQuestion1 from "../../store/useQuestion1";
-import PDF from "../../master_recording/success/pdf";
+// import PDF from "../../master_recording/success/pdf";
 import { loadStripe } from "@stripe/stripe-js";
 import Popup from "reactjs-popup";
 import { useState } from "react";
