@@ -47,7 +47,7 @@ const Success = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ songName: songName }),
+        body: JSON.stringify({ songName: songName, cid: cid }),
       });
       if (!response.ok) {
         console.error("Error sending email:", response.statusText);
