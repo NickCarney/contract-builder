@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { cookies } from 'next/headers';
-import {  NextResponse } from 'next/server';
+import {  NextRequest, NextResponse } from 'next/server';
 import { chromium } from "playwright";
 
 // Initialize OAuth2 client
@@ -13,7 +13,7 @@ const oauth2Client = new google.auth.OAuth2(
 const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
 // Handle the dynamic route
-export async function GET( { params }: { params: { id: string } }) {
+export async function GET( req: NextRequest) {
 
     const browser = await chromium.launch({ headless: false });
     const context = await browser.newContext();
@@ -54,7 +54,7 @@ export async function GET( { params }: { params: { id: string } }) {
   oauth2Client.setCredentials({ access_token: token });
 
   // Extract the 'id' directly from the dynamic route
-  const { id } = params;
+  const { id } = await req.json();
 
   if (!id) {
     return NextResponse.json({ error: 'Email ID is required' }, { status: 400 });
