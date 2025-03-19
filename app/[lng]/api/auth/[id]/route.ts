@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { cookies } from 'next/headers';
-import { NextRequest, NextResponse } from 'next/server';
+import {  NextResponse } from 'next/server';
 import { chromium } from "playwright";
 
 // Initialize OAuth2 client
@@ -13,7 +13,7 @@ const oauth2Client = new google.auth.OAuth2(
 const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
 // Handle the dynamic route
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET( { params }: { params: { id: string } }) {
 
     const browser = await chromium.launch({ headless: false });
     const context = await browser.newContext();

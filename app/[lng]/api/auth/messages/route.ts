@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { cookies } from 'next/headers';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
@@ -8,7 +8,7 @@ const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_REDIRECT_URI
 );
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const token = cookies().get('gmail_token')?.value;
 
   if (!token) {

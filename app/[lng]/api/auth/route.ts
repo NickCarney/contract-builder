@@ -38,6 +38,7 @@ export async function GET(req: NextRequest) {
     });
     return NextResponse.redirect(process.env.GOOGLE_BASE_URL+'/en/test');
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ error: 'Authentication failed' }, { status: 500 });
   }
 }
