@@ -6,6 +6,7 @@ Walks musicians through process of creating a splits contract. Asks users differ
 
 Uses zustand for lightweight state management. Stores values throughout pages, accesses them in the success page, and adds them to downloadable pdf using jsPDF.
 
-Next steps 12/2:
-match figma exactly.
-check contributors page
+
+'Agent' to register works on ASCAP:
+
+The user can select they want their song registered with ASCAP, and the 'agent' gets to work. Using playwright, the ascap website is openened and logged into with A Mesa publisher account. Playwright is prompted for a 2fa code sent to the email. Using the Gmail API, the email from donotreply@ascap.com is found and the 2fa code is extracted. Once logged in, we go to the register works page and fill out the details with the user's song info and register the work. 
