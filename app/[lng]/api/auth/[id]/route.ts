@@ -110,9 +110,8 @@ export async function GET( { params }: { params: { id: string } }) {
       body: emailBody,
       code2fa,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error fetching email:', error);
-    console.error('Error details:', error.response?.data);
     return NextResponse.json({ error: 'Failed to fetch email' }, { status: 500 });
   }
 }

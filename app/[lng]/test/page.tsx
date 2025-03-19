@@ -3,7 +3,10 @@ import { useEffect, useState } from 'react';
 
 
 const Test = ({ params }: { params: { lng: string } }) => {
+  console.log(params)
+  // eslint-disable-next-line
   const [emails, setEmails] = useState<any[]>([]);
+  // eslint-disable-next-line
   const [emailDetails, setEmailDetails] = useState<any | null>(null);
 
 
