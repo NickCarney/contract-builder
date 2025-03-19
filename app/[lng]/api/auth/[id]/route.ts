@@ -33,15 +33,15 @@ export async function GET( req: NextRequest) {
     await page.fill('input[name="username"]', process.env.ASCAP_EMAIL!);
     await page.fill('input[name="password"]', process.env.ASCAP_PASSWORD!);
     await page.waitForTimeout(3000);
-    // await page.click('button[type="submit"]');
+    await page.click('button[type="submit"]');
 
-    // await page.click('input[type="radio"]');
-    // await page.click('button[type="submit"]');
+    await page.click('input[type="radio"]');
+    await page.click('button[type="submit"]');
 
     await page.waitForTimeout(5000);//5s
     // // Wait for 2FA input field
-    // await page.waitForSelector('input[name="otp"]');
-    // console.log("Waited for 2fa")
+    await page.waitForSelector('input[name="otp"]');
+    console.log("Waited for 2fa")
 
 
   const cookieStore = cookies();
@@ -92,8 +92,8 @@ export async function GET( req: NextRequest) {
     const code2fa = emailBody.slice(index-8,index-1);
 
 
-    // await page.fill('input[name="otp"]', code2fa);
-    // await page.click('button[type="submit"]');
+    await page.fill('input[name="otp"]', code2fa);
+    await page.click('button[type="submit"]');
 
 
 
