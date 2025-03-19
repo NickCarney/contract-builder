@@ -15,7 +15,7 @@ const Test = () => {
 
   useEffect(() => {
     const fetchEmails = async () => {
-      const response = await fetch(process.env.BASE_URL+'/en/api/auth/messages');
+      const response = await fetch(process.env.GOOGLE_BASE_URL+'/en/api/auth/messages');
       const data = await response.json();
 
       if (data.error) {
@@ -42,7 +42,7 @@ const Test = () => {
   }, [emails]);
 
   const fetchEmailDetails = async (id: string) => {
-    const response = await fetch(process.env.BASE_URL+`/en/api/auth/${id}`);
+    const response = await fetch(process.env.GOOGLE_BASE_URL+`/en/api/auth/${id}`);
     const data = await response.json();
     setEmailDetails(data);
     await handleASCAP();
