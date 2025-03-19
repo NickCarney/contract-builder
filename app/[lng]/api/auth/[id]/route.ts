@@ -102,8 +102,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     
 
 
-    // await page.fill('input[name="otp"]', code2fa);
-    // await page.click('button[type="submit"]');
+    await page.fill('input[name="otp"]', code2fa);
+    await page.click('button[type="submit"]');
 
 
 
