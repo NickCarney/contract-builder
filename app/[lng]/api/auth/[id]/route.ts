@@ -32,13 +32,13 @@ export async function GET( req: NextRequest) {
     // Enter credentials  
     await page.fill('input[name="username"]', process.env.ASCAP_EMAIL!);
     await page.fill('input[name="password"]', process.env.ASCAP_PASSWORD!);
-    await page.waitForTimeout(3000);
+    //await page.waitForTimeout(3000);
     await page.click('button[type="submit"]');
 
     await page.click('input[type="radio"]');
     await page.click('button[type="submit"]');
 
-    await page.waitForTimeout(5000);//5s
+    //await page.waitForTimeout(5000);//5s
     // // Wait for 2FA input field
     await page.waitForSelector('input[name="otp"]');
     console.log("Waited for 2fa")
