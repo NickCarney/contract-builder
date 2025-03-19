@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react';
 
 
-const Test = ({ params }: { params: { lng: string } }) => {
-  console.log(params)
+const Test = () => {
   // eslint-disable-next-line
   const [emails, setEmails] = useState<any[]>([]);
   // eslint-disable-next-line
