@@ -11,9 +11,9 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 
-function sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+// function sleep(ms: number): Promise<void> {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+//   }
 
 const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
@@ -51,7 +51,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     console.log("Waited for 2fa box, now waiting for email")
 
 
-    await sleep(10000);//wait ten seconds for email to come in
+    // await sleep(10000);//wait ten seconds for email to come in
 
   const cookieStore = cookies();
   const token = cookieStore.get('gmail_token')?.value;
