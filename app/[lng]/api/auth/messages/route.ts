@@ -9,6 +9,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 export async function GET() {
+  console.log("IN MESSAGES GET")
   const token = cookies().get('gmail_token')?.value;
 
   if (!token) {
@@ -27,7 +28,7 @@ export async function GET() {
     });
 
     const messages = response.data.messages || [];
-
+    console.log("MESSAGES GOOD", messages)
     return NextResponse.json(messages);
   } catch (error) {
     console.error('Error fetching emails:', error);

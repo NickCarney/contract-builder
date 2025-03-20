@@ -36,6 +36,8 @@ export async function GET(req: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
       maxAge: 3600,
     });
+
+    console.log("AUTH FINISHING")
     return NextResponse.redirect(process.env.GOOGLE_BASE_URL+'/en/test');
   } catch (error) {
     console.log(error);

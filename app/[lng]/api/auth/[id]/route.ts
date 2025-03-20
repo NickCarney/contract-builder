@@ -19,7 +19,8 @@ const gmail = google.gmail({ version: 'v1', auth: oauth2Client });
 
 // Handle the dynamic route
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
-    console.log(req)
+    console.log("IN ID GET")
+    // console.log(req)
 
     const browser = await chromium.launch({ headless: false });
     const context = await browser.newContext();
