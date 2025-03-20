@@ -1,7 +1,7 @@
 import { google } from 'googleapis';
 import { cookies } from 'next/headers';
 import {  NextRequest, NextResponse } from 'next/server';
-import { chromium } from "playwright";
+// import { chromium } from "playwright";
 
 // Initialize OAuth2 client
 const oauth2Client = new google.auth.OAuth2(
@@ -22,33 +22,33 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     console.log("IN ID GET")
     // console.log(req)
 
-    const browser = await chromium.launch({ headless: false });
-    const context = await browser.newContext();
-    const page = await context.newPage();
+    // const browser = await chromium.launch({ headless: false });
+    // const context = await browser.newContext();
+    // const page = await context.newPage();
 
-    await page.goto("https://www.ascap.com/member-access#login");
+    // await page.goto("https://www.ascap.com/member-access#login");
 
-    const iframes = await page.frames();
-    console.log('Found iFrames:', iframes.length);
-    for (const frame of iframes) {
-        console.log('Frame URL:', frame.url());
-    }
-    const iframe = page.frame({ url: /consent\.trustarc\.com/ });
-    await iframe?.locator('a.call').click();
+    // const iframes = await page.frames();
+    // console.log('Found iFrames:', iframes.length);
+    // for (const frame of iframes) {
+    //     console.log('Frame URL:', frame.url());
+    // }
+    // const iframe = page.frame({ url: /consent\.trustarc\.com/ });
+    // await iframe?.locator('a.call').click();
 
-    // Enter credentials  
-    await page.fill('input[name="username"]', process.env.ASCAP_EMAIL!);
-    await page.fill('input[name="password"]', process.env.ASCAP_PASSWORD!);
-    //await page.waitForTimeout(3000);
-    await page.click('button[type="submit"]');
+    // // Enter credentials  
+    // await page.fill('input[name="username"]', process.env.ASCAP_EMAIL!);
+    // await page.fill('input[name="password"]', process.env.ASCAP_PASSWORD!);
+    // //await page.waitForTimeout(3000);
+    // await page.click('button[type="submit"]');
 
-    await page.click('input[type="radio"]');
-    await page.click('button[type="submit"]');
+    // await page.click('input[type="radio"]');
+    // await page.click('button[type="submit"]');
 
-    //await page.waitForTimeout(5000);//5s
-    // // Wait for 2FA input field
-    await page.waitForSelector('input[name="otp"]');
-    console.log("Waited for 2fa box, now waiting for email")
+    // //await page.waitForTimeout(5000);//5s
+    // // // Wait for 2FA input field
+    // await page.waitForSelector('input[name="otp"]');
+    // console.log("Waited for 2fa box, now waiting for email")
 
 
     // await sleep(10000);//wait ten seconds for email to come in
@@ -103,8 +103,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     
 
 
-    await page.fill('input[name="otp"]', code2fa);
-    await page.click('button[type="submit"]');
+    // await page.fill('input[name="otp"]', code2fa);
+    // await page.click('button[type="submit"]');
 
 
 
