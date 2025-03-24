@@ -23,7 +23,7 @@ export default function Agent({
             {!isOpen && (
                 <Popup
                 trigger={
-                    <a className="font-rubik underline relative content-center sm:absolute bottom-[3%] right-[3%] text-[#AC4444] text-base">
+                    <a className="font-rubik underline relative content-center sm:absolute bottom-[3%] text-[#AC4444] text-base">
                     {/* <Image src={brainImage} width={60} height={20} alt="?"></Image> */}
                     {t("agent")}
                     </a>
