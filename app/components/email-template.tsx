@@ -2,6 +2,7 @@ import * as React from "react";
 
 interface EmailTemplateProps {
   songName: string;
+  cid: string;
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({

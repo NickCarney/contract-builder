@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import useDynamicPageStore from "../store/use[page]";
+import useQuestion1 from "../store/useQuestion1";
 import useQuestion2 from "../store/useQuestion2";
 import { useTranslation } from "@/app/i18n/client";
 import { NextResponse } from "next/server";
@@ -21,6 +22,7 @@ const Payment = ({
   const pages = useDynamicPageStore((state) => state.pages);
   const song = useQuestion2((state)=> state.song)
   const emails: string[] = [];
+  const cid = useQuestion1((state) => state.cid);
   Object.keys(pages).map((id) => {
     const email = pages[Number(id)]?.email;
     emails.push(email);
@@ -30,14 +32,14 @@ const Payment = ({
   const [message, setMessage] = useState("");
 
 
-  const sendEmail = async (songName: string) => {
+  const sendEmail = async (songName: string, cid:string) => {
     try {
       const response = await fetch(`/${lng}/api/sendPaid`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ songName: songName }),
+        body: JSON.stringify({ songName: songName, cid: cid }),
       });
       if (!response.ok) {
         console.error("Error sending email:", response.statusText);
@@ -58,7 +60,7 @@ const Payment = ({
   useEffect(() => {
     if (paid === "true") {
       setMessage(t("1"));
-      sendEmail(song);
+      sendEmail(song, cid);
     } else {
       setMessage(t("2"));
     }

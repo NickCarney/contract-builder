@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useTranslation } from "../i18n/client";
 import Popup from "reactjs-popup";
+// import Image from "next/image";
+// import brainImage from "../[lng]/public/images/brain.png"
 
 export default function Agent({
     params,
@@ -21,7 +23,8 @@ export default function Agent({
             {!isOpen && (
                 <Popup
                 trigger={
-                    <a className="font-share underline relative content-center sm:absolute left-[5%] sm:left-[60%] bottom-0">
+                    <a className="font-rubik underline relative content-center sm:absolute bottom-[3%] right-[0%] text-[#AC4444] text-base">
+                    {/* <Image src={brainImage} width={60} height={20} alt="?"></Image> */}
                     {t("agent")}
                     </a>
                 }
@@ -33,10 +36,10 @@ export default function Agent({
                     <div
                         className="modal border-2 border-white"
                         style={{
-                        height: "70vh",
+                        height: "80vh",
                         maxHeight: "800px",
                         width: "90vw",
-                        maxWidth: "400px",
+                        maxWidth: "90vw",
                         overflowY: "scroll",
                         }}
                     >

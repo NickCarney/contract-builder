@@ -40,14 +40,14 @@ const Success = ({
     }
   }, []);
 
-  const sendEmail = async (songName: string) => {
+  const sendEmail = async (songName: string, cid: string) => {
     try {
       const response = await fetch(`/${lng}/api/sendFree`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ songName: songName }),
+        body: JSON.stringify({ songName: songName, cid: cid }),
       });
       if (!response.ok) {
         console.error("Error sending email:", response.statusText);
@@ -68,11 +68,12 @@ const Success = ({
   const handleFreeDownload = () => {
     downloadUnsignedFalse();
     cid = cid;
-    sendEmail(songName);
+    sendEmail(songName, cid);
     document.getElementById("ipfs")!.innerText = "View contract on IPFS";
   };
 
   const handleDocusign = () => {
+    downloadUnsignedFalse();
     router.push(`/${lng}/both/docusign_choice`);
     //downloadUnsignedTrue();
   };

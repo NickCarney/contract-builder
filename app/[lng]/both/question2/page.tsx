@@ -61,7 +61,7 @@ const ContractBuilder2 = ({
               type="text"
               name="type"
               onChange={handleSongChange}
-              className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-full sm:w-1/2 font-rubik p-2"
+              className="rounded-lg bg-black border border-white text-white focus:outline-none focus:ring-2 focus:ring-white w-full sm:w-1/2 font-rubik_medium p-2"
               required
             />
           </form>

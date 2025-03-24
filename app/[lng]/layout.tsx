@@ -59,7 +59,7 @@ export default async function RootLayout({
         <SpeedInsights />
         <Analytics />
         <div className="relative">
-        <Agent params={{ lng: lng }}/>
+        
         </div>
         <Image
           src={mesaImage}
@@ -68,7 +68,7 @@ export default async function RootLayout({
           alt="M"
           className="relative left-1/2 transform -translate-x-1/2"
         ></Image>
-        
+        <Agent params={{ lng: lng }}/>
       </body>
     </html>
   );

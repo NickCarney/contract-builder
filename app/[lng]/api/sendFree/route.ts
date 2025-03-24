@@ -4,7 +4,7 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
-  const { songName } = await request.json(); // Assuming the name is sent in the request body
+  const { songName, cid } = await request.json(); // Assuming the name is sent in the request body
 
   try {
     const { data, error } = await resend.emails.send({
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
         "thomas@mesawallet.io",
       ],
       subject: "Free Contract Download Successful",
-      react: EmailTemplate({ songName }),
+      react: EmailTemplate({ songName, cid }),
     });
 
     if (error) {

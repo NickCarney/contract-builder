@@ -505,6 +505,7 @@ const PDF = (isClicked: boolean) => {
               aka: akas,
               address: addresses,
               ids: ids,
+              song: recording,
             },
           ]);
 

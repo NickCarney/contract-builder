@@ -211,6 +211,7 @@ const DynamicPage = ({
                   <option value={t("producerOption")}>{t("producerOption")}</option>
                   <option value={t("execProducerOption")}>{t("execProducerOption")}</option>
                   <option value={t("engineerOption")}>{t("engineerOption")}</option>
+                  <option value="Interpreter">Interpreter</option>
                 </select>
               </div>
               <div className="sm:w-[37%]">
