@@ -1,4 +1,5 @@
 // utils/generateJWT.js
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const jwt = require('jsonwebtoken');
 
 const integrationKey = process.env.DOCUSIGN_CLIENT_ID;

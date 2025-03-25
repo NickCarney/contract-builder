@@ -8,7 +8,7 @@ import useDynamicPageStore from "../store/use[page]";
 
 export default function Home() {
   const [token, setToken] = useState('');
-  let cid = useQuestion1((state) => state.cid);
+  const cid = useQuestion1((state) => state.cid);
   const song = useQuestion2.getState().song;
   const pages = useDynamicPageStore.getState().pages;
   
@@ -19,13 +19,22 @@ export default function Home() {
 
   useEffect(() => {
     const fetchToken = async () => {
-      const response = await fetch('/en/api/docusign');
-      const data = await response.json();
-      console.log(data)
-      setToken(data.accessToken);
-    };
-    fetchToken();
-  }, []);
+            const response = await fetch(`/en/api/docusign`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
+                });
+
+
+            //   const response = await fetch('/en/api/docusign');
+            const data = await response.json();
+            console.log(data)
+            setToken(data.response);
+            };
+        fetchToken();
+  }, [cid]);
 
   return (
     <div>
