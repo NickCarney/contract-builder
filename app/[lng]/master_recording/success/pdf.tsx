@@ -447,8 +447,8 @@ const PDF = (isClicked: boolean) => {
         doc.text(t("legal_name", { name }), x, y+5);
         doc.line(x + 20, y + 6, x + 155, y + 6);
         y = getY(y, 5);
-        doc.text(t("signature"), x, y+14);
-        doc.line(x + 16, y +15, x + 110, y + 15);
+        doc.text(t("signature")+ id+":", x, y+14);
+        doc.line(x + 20, y +15, x + 110, y + 15);
         doc.text(t("signature_date", { date }), x + 115, y+14);
         doc.line(x + 125, y + 15, x + 155, y + 15);
         y = getY(y, 25);
