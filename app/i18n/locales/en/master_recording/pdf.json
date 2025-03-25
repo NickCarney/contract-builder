@@ -61,6 +61,6 @@
     "dispute_details": "Any controversy will be dealt with through dialogue between the parties. Failing this, they will seek to exhaust an alternative dispute resolution mechanism, and failing this, they will submit it to the competent judges under the laws of {{jurisdiction}}.",
     "agreement_modification": "If any provision of this Agreement is invalid, void or unenforceable, the remainder of the Agreement shall remain in full force and effect. This Agreement may not be modified in any way except by an instrument signed by the parties. This Agreement may be signed in duplicate (and/or facsimile and/or PDF), each of which shall be deemed an original, but all of which together shall constitute the Agreement.",
     "signatures": "In witness whereof, the collaborators sign:",
-    "signature": "Signature:",
+    "signature": "Signature",
     "signature_date": "Date: {{date}}"
 }
