@@ -22,7 +22,7 @@ const useQuestion1 = create<SplitsState>()(
     }),
     {
       name: "question1-storage",
-      partialize: (state) => ({ split: state.split, date: state.date }),
+      partialize: (state) => ({ split: state.split, date: state.date, cid: state.cid }),
     }
   )
 );
