@@ -40,19 +40,18 @@ const Payment = ({
   
   console.log(cid, song, names, emails)
 
-    const fetchToken = async () => {
-            const response = await fetch(`/en/api/docusign`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
-                });
+  const sendDocusign = async () => {
+          const response = await fetch(`/en/api/docusign`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
+              });
 
-            const data = await response.json();
-            console.log(data)
-            };
-        fetchToken();
+          const data = await response.json();
+          console.log(data)
+          };
 
 
   const sendEmail = async (songName: string, cid:string) => {
@@ -84,11 +83,11 @@ const Payment = ({
     if (paid === "true") {
       setMessage(t("1"));
       sendEmail(song, cid);
-      fetchToken();
+      sendDocusign();
     } else {
       setMessage(t("2"));
     }
-  }, [paid, emails]);
+  }, [paid]);
 
 
 
