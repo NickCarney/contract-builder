@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const integrationKey = process.env.DOCUSIGN_CLIENT_ID;
 const userId = process.env.DOCUSIGN_USER_ID;
 const currentTime = Math.floor(Date.now() / 1000);
-const publicKey = process.env.DOCUSIGN_PUBLIC_KEY;
+// const publicKey = process.env.DOCUSIGN_PUBLIC_KEY; //NOT USED
 const privateKey = process.env.DOCUSIGN_PRIVATE_KEY
 
 // const privateKeyPath = path.join(__dirname, 'path/to/your/private.key');
