@@ -19,17 +19,40 @@ const Payment = ({
   const { t } = useTranslation(lng, "confirmation");
   const query = useSearchParams();
   const paid = query.get("success");
-  const pages = useDynamicPageStore((state) => state.pages);
-  const song = useQuestion2((state)=> state.song)
-  const emails: string[] = [];
-  const cid = useQuestion1((state) => state.cid);
-  Object.keys(pages).map((id) => {
-    const email = pages[Number(id)]?.email;
-    emails.push(email);
-  });
-  console.log("emails:", emails);
+  // const pages = useDynamicPageStore((state) => state.pages);
+  // const song = useQuestion2((state)=> state.song)
+  // const emails: string[] = [];
+  // const cid = useQuestion1((state) => state.cid);
+  // Object.keys(pages).map((id) => {
+  //   const email = pages[Number(id)]?.email;
+  //   emails.push(email);
+  // });
+  // console.log("emails:", emails);
 
   const [message, setMessage] = useState("");
+
+  let cid = useQuestion1((state) => state.cid);
+  const song = useQuestion2.getState().song;
+  const pages = useDynamicPageStore.getState().pages;
+  
+  const names = Object.values(pages).map((item) => item.legalName);
+  const emails = Object.values(pages).map((item) => item.email);
+  
+  console.log(cid, song, names, emails)
+
+    const fetchToken = async () => {
+            const response = await fetch(`/en/api/docusign`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
+                });
+
+            const data = await response.json();
+            console.log(data)
+            };
+        fetchToken();
 
 
   const sendEmail = async (songName: string, cid:string) => {
@@ -61,6 +84,7 @@ const Payment = ({
     if (paid === "true") {
       setMessage(t("1"));
       sendEmail(song, cid);
+      fetchToken();
     } else {
       setMessage(t("2"));
     }
