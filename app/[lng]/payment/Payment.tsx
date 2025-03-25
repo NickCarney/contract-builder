@@ -32,8 +32,8 @@ const Payment = ({
   const [message, setMessage] = useState("");
 
   const cid = useQuestion1((state) => state.cid);
-  const song = useQuestion2.getState().song;
-  const pages = useDynamicPageStore.getState().pages;
+  const song = useQuestion2((state) => state.song);
+  const pages = useDynamicPageStore((state) => state.pages);
   
   const names = Object.values(pages).map((item) => item.legalName);
   const emails = Object.values(pages).map((item) => item.email);

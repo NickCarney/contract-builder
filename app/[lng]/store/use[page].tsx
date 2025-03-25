@@ -62,7 +62,26 @@ const useDynamicPageStore = create<DynamicPageState>()(
     }),
     {
       name: 'dynamic-pages-storage', 
-    }
+      partialize: (state) => ({
+        pages: Object.fromEntries(
+          Object.entries(state.pages).map(([key, page]) => [
+            key,
+            {
+              legalName: page.legalName,
+              email: page.email,
+              contributorType: page.contributorType,
+              masterContributorType: page.masterContributorType,
+              split: page.split,
+              splitTotal: page.splitTotal,
+              aka: page.aka,
+              ipi: page.ipi,
+              address: page.address,
+              id: page.id,
+              producer: page.producer,
+            }
+          ])
+        )
+      }),    }
   )
 );
 
