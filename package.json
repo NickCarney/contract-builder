@@ -18,9 +18,13 @@
     "@vercel/speed-insights": "^1.1.0",
     "accept-language": "^3.0.20",
     "crypto-randomuuid": "^1.0.0",
+    "docusign-esign": "^8.0.1",
+    "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
     "i18next": "^23.11.5",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-resources-to-backend": "^1.2.1",
+    "jsonwebtoken": "^9.0.2",
     "jspdf": "^2.5.2",
     "next": "^14.2.20",
     "next-i18next": "^15.3.1",
@@ -41,6 +45,8 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
+    "@types/docusign-esign": "^5.19.8",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18",
