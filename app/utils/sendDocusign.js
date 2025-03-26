@@ -10,7 +10,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     }
     // Configuration
     const apiClient = new docusign.ApiClient();
-    apiClient.setBasePath('https://demo.docusign.net/restapi');
+    apiClient.setBasePath('https://na4.docusign.net/restapi');
     apiClient.addDefaultHeader('Authorization', 'Bearer ' + accessToken);
 
     // Create the envelope definition

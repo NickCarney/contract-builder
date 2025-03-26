@@ -1,7 +1,7 @@
 // const fetch = require('node-fetch');
 
 const generateAccessToken = async (jwt) => {
-    const response = await fetch('https://account-d.docusign.com/oauth/token', {
+    const response = await fetch('https://account.docusign.com/oauth/token', {
         method: 'POST',
         headers: {
           'User-Agent': 'DocusignCopilot/0.0.1',

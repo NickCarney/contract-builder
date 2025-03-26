@@ -15,7 +15,7 @@ const generateJWT = () => {
     const payload = {
         iss: integrationKey,
         sub: userId,
-        aud: 'account-d.docusign.com', // DocuSign auth URL for sandbox (account.docusign.com for real deal)
+        aud: 'account.docusign.com', // DocuSign auth URL for sandbox (account.docusign.com for real deal)
         iat: currentTime,
         exp: currentTime + 6000,
         scope: 'signature impersonation',
