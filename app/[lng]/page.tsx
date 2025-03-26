@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import i18next from 'i18next';
+import { useRouter, usePathname } from "next/navigation";
 import useJurisdiction from "./store/useJurisdiction";
 import { useTranslation } from "../i18n/client";
 import Popup from "reactjs-popup";
@@ -16,16 +17,15 @@ export default function Home({
 }) {
   const { lng } = params;
   //if (languages.indexOf(lng) < 0) lng = fallbackLng;
-  const router = useRouter();
-  // const { push } = useRouter();
+  const { push } = useRouter();
+  const pathname = usePathname();
   // const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
   // const [isOpen4, setIsOpen4] = useState(false);
-  const [lang, setLang] = useState(lng);
   const [jurisdiction, setJurisdiction] = useState('');
 
-  const { t } = useTranslation(lang);
+  const { t } = useTranslation(lng);
 
   const updateLanguage = useJurisdiction((state) => state.updateLanguage);
   const updateJurisdiction = useJurisdiction((state) => state.updateJurisdiction);
@@ -48,14 +48,21 @@ export default function Home({
 
   const handleLangChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newLng = event.target.value;
-      setLang(newLng);
+
+
+        i18next.changeLanguage(newLng);
+
+        const newPath = `/${newLng}${pathname.replace(/^\/(en|es)/, '')}`;
+        push(newPath);
+
+        // setLang(newLng);
   };
 
 
   const handleSubmit = () =>{
-    updateLanguage(lang);
+    updateLanguage(lng);
     updateJurisdiction(jurisdiction);
-    router.push(`/${lang}/question1`);
+    push(`/${lng}/question1`);
   }
   return (
     <div className="flex flex-col items-center md:items-start pt-20  p-2 w-full sm:w-3/5 sm:mx-auto">
@@ -174,7 +181,7 @@ export default function Home({
                   <select
                   name="type"
                   id="cont"
-                  value={lang}
+                  value={lng}
                   className="bg-black p-2 size-10 w-full font-rubik"
                   onChange={handleLangChange}
                   required
