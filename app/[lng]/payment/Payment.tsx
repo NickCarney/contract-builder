@@ -87,7 +87,7 @@ const Payment = ({
     } else {
       setMessage(t("2"));
     }
-  }, [paid]);
+  }, [ cid]);
 
 
 
