@@ -154,7 +154,7 @@ const DynamicPage = ({
     if(previousPage == 1){
       setSplitTotal(0);
       router.push(
-        `/musical_work/1?pageCount=${pageCount}&split=${0}`
+        `/both/1?pageCount=${pageCount}&split=${0}`
       );
     }
     else if (previousPage > 0) {
