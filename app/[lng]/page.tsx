@@ -56,12 +56,6 @@ export default function Home({
     updateLanguage(lang);
     updateJurisdiction(jurisdiction);
     router.push(`/${lang}/question1`);
-    if(lang === 'es'){
-      setLang('en');
-    }else{
-      setLang('es');
-    }
-    
   }
   return (
     <div className="flex flex-col items-center md:items-start pt-20  p-2 w-full sm:w-3/5 sm:mx-auto">
