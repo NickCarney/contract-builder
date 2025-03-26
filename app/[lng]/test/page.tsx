@@ -38,11 +38,11 @@ export default function Home() {
 
   return (
     <div>
-      {/* <a href={`https://account-d.docusign.com/oauth/auth?
+      <a href={`https://account-d.docusign.com/oauth/auth?
       response_type=code
       &scope=manage_app_keys%20signature%20openid%20cors%20click.manage%20click.send%20organization_read%20group_read%20permission_read%20user_read%20user_write%20account_read%20domain_read%20identity_provider_read%20user_data_redact%20dtr.rooms.read%20dtr.rooms.write%20dtr.documents.read%20dtr.documents.write%20dtr.profile.read%20dtr.profile.write%20dtr.company.read%20dtr.company.write%20room_forms%20notary_write%20notary_read%20spring_read%20spring_write%20webforms_read%20webforms_instance_read%20webforms_instance_write%20aow_manage%20adm_store_unified_repo_read%20impersonation
       &client_id=${process.env.DOCUSIGN_CLIENT_ID}
-      &redirect_uri=${process.env.DOCUSIGN_REDIRECT_URI}`}>Get Docusign consent</a> */}
+      &redirect_uri=${process.env.DOCUSIGN_REDIRECT_URI}`}>Get Docusign consent</a>
       <h1>Your access Token</h1>
       <p>{token}</p>
     </div>
