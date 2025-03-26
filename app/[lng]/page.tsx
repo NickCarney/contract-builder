@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useJurisdiction from "./store/useJurisdiction";
 import { useTranslation } from "../i18n/client";
@@ -16,7 +16,8 @@ export default function Home({
 }) {
   let { lng } = params;
   //if (languages.indexOf(lng) < 0) lng = fallbackLng;
-  const { push } = useRouter();
+  const router = useRouter();
+  // const { push } = useRouter();
   // const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
@@ -46,20 +47,21 @@ export default function Home({
   }
 
   const handleLangChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    lng = event.target.value;
-    setLang(lng);
+    const newLng = event.target.value;
+      setLang(newLng);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLang(lang); // Update the language after some time
-    }, 2000);
-  }, []);
 
   const handleSubmit = () =>{
     updateLanguage(lang);
     updateJurisdiction(jurisdiction);
-    push(`/${lang}/question1`)
+    router.push(`/${lang}/question1`);
+    if(lang === 'es'){
+      setLang('en');
+    }else{
+      setLang('es');
+    }
+    
   }
   return (
     <div className="flex flex-col items-center md:items-start pt-20  p-2 w-full sm:w-3/5 sm:mx-auto">
