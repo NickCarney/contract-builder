@@ -14,7 +14,7 @@ export default function Home({
     lng: string;
   };
 }) {
-  let { lng } = params;
+  const { lng } = params;
   //if (languages.indexOf(lng) < 0) lng = fallbackLng;
   const router = useRouter();
   // const { push } = useRouter();
