@@ -7,7 +7,6 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     if(cid==''){
         console.log('No CID');
         console.error('Error creating envelope: CID');
-        return;
     }
     // Configuration
     const apiClient = new docusign.ApiClient();
