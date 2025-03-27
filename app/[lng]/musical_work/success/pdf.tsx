@@ -33,6 +33,7 @@ const PDF = (isClicked: boolean) => {
   const jurisdiction = useJurisdiction((state) => state.jurisdiction);
   const { t } = useTranslation("musical_work/pdf");
   const setCid = useQuestion1((state) => state.setCid);
+  const setSplitType = useQuestion1((state) => state.setSplitType);
   const names: string[] = [];
   const emails: string[] = [];
   const akas: string[] = [];
@@ -422,8 +423,8 @@ const PDF = (isClicked: boolean) => {
         doc.text(t("legalName", { name }), x, y+5);
         doc.line(x + 20, y + 6, x + 155, y + 6);
         y = getY(y, 5);
-        doc.text(t("signature"), x, y+14);
-        doc.line(x + 16, y +15, x + 110, y + 15);
+        doc.text(t("signature")+ id+":", x, y+14);
+        doc.line(x + 20, y +15, x + 110, y + 15);
         doc.text(t("signatureDate", { date }), x + 115, y+14);
         doc.line(x + 125, y + 15, x + 155, y + 15);
         y = getY(y, 25);
@@ -458,6 +459,7 @@ const PDF = (isClicked: boolean) => {
 
         const cid = response.IpfsHash; // Get the CID from the response
         setCid(cid);
+        setSplitType("Songwriting");
         const userId = uuidv4(); // Generate UUID here
 
         // Now post the userId and CID to Supabase

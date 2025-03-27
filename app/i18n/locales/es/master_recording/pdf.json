@@ -66,6 +66,6 @@
   "agreement_modification": "Si alguna disposición de este Acuerdo es inválida, nula o no exigible, el resto del Acuerdo permanecerá en plena vigencia y efecto. Este Acuerdo no podrá modificarse de ninguna manera, excepto mediante un instrumento firmado por las partes. Este Acuerdo puede ser firmado en duplicado (y/o por fax y/o PDF), cada uno de los cuales se considerará original, pero todos juntos constituirán el Acuerdo.",
 
   "signatures": "En testimonio de lo cual, los colaboradores firman:",
-  "signature": "Firma:",
+  "signature": "Firma",
   "signature_date": "Fecha: {{date}}"
 }

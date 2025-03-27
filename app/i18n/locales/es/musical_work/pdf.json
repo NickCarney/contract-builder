@@ -60,6 +60,6 @@
 
   "signatures": "En testimonio de lo cual, los colaboradores firman:",
 
-  "signature": "Firma:",
+  "signature": "Firma",
   "signatureDate": "Fecha: {{date}}"
 }
