@@ -83,7 +83,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
     console.log(`Envelope created with ID: ${result.envelopeId}`);
     } catch (err) {
     console.error(`Error creating envelope: ${err}`);
-    const response = await fetch(`/en/api/send/docusignFail`, {
+    const response = await fetch(`https://contratos.mesawallet.io/en/api/send/docusignFail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
