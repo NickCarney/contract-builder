@@ -79,15 +79,8 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     const accountId = process.env.DOCUSIGN_ACCOUNT_ID;
     console.log("SENT ")
 
-    envelopesApi.createEnvelope(accountId, { envelopeDefinition })
-    .then((result) => {
-        console.log(`Envelope created with ID: ${result.envelopeId}`);
-
-    return result.envelopeId;
-    })
-    .catch((error) => {
-        console.error('Error creating envelope:', error);
-    });
+    const result = await envelopesApi.createEnvelope(accountId, { envelopeDefinition })
+    console.log(`Envelope created with ID: ${result.envelopeId}`);
 }
 
 module.exports = sendDocusign;
