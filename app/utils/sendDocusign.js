@@ -2,7 +2,6 @@
 const docusign = require('docusign-esign');
 
 
-
 const sendDocusign = async (accessToken, song, cid, names, emails, splitType) => {
     // console.log("in sendDocusign:",cid, song, names, emails)
     if(cid===''){
@@ -84,6 +83,14 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
     console.log(`Envelope created with ID: ${result.envelopeId}`);
     } catch (err) {
     console.error(`Error creating envelope: ${err}`);
+    const response = await fetch(`/en/api/send/docusignFail`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ songName: songName, recipients: recipients }),
+      });
+      console.log(response);
     }
 }
 
