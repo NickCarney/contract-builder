@@ -50,7 +50,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     signer.email = emails[index];
     signer.name = names[index];
     signer.recipientId = (index + 1).toString();
-    console.log("signer")
+    console.log("signer", signer)
 
     // Create a signHere tab for the signer
     const signHere = new docusign.SignHere();
@@ -72,7 +72,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     // Add the recipients to the envelope
     envelopeDefinition.recipients = new docusign.Recipients();
     envelopeDefinition.recipients.signers = recipients;
-    console.log("past adding recipients")
+    console.log("past adding recipients", recipients)
 
     // Send the envelope
     const envelopesApi = new docusign.EnvelopesApi(apiClient);
