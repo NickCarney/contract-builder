@@ -18,7 +18,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
 
     // Create the envelope definition
     const envelopeDefinition = new docusign.EnvelopeDefinition();
-    envelopeDefinition.emailSubject = song,splitType,' ownership splits by MESA ';
+    envelopeDefinition.emailSubject = song+" "+splitType,' ownership splits by MESA';
     envelopeDefinition.status = 'sent';
     console.log("past env def")
 
@@ -32,7 +32,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
     // Create the document object
     const document = new docusign.Document();
     document.documentBase64 = base64Doc;
-    document.name = song,splitType,' ownership splits by MESA ';
+    document.name = song+" "+splitType,' ownership splits by MESA';
     document.fileExtension = 'pdf';
     document.documentId = '1';
     console.log("past doc")
