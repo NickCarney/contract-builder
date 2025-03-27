@@ -33,6 +33,7 @@ const PDF = (isClicked: boolean) => {
   const jurisdiction = useJurisdiction((state) => state.jurisdiction);
   const { t } = useTranslation("master_recording/pdf");
   const setCid = useQuestion1((state) => state.setCid);
+  const setSplitType = useQuestion1((state) => state.setSplitType);
   const names: string[] = [];
   const emails: string[] = [];
   const akas: string[] = [];
@@ -485,6 +486,7 @@ const PDF = (isClicked: boolean) => {
 
         const cid = response.IpfsHash; // Get the CID from the response
         setCid(cid);
+        setSplitType("Master Recording")
         const userId = uuidv4(); // Generate UUID here
 
         // Now post the userId and CID to Supabase
