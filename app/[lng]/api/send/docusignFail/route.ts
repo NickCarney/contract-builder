@@ -10,7 +10,7 @@ export async function POST(request: Request) {
         from: 'Mesa <contracts@mesawallet.io>',
         to: ['nick@mesawallet.io'],
         subject: 'Docusign failed for song: '+songName,
-        html: `<p>${recipients}</p>`,
+        html: `<p>${JSON.stringify(recipients)}</p>`,
       });
 
     if (error) {
