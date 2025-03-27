@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
     const { songName, cid, names, emails } = await request.json();
-    console.log("in route:",cid, song, names, emails)
+    console.log("in route:",cid, songName, names, emails)
     try {
         const jwt = generateJWT();
         const accessToken = await generateAccessToken(jwt);

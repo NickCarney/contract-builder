@@ -19,15 +19,6 @@ const Payment = ({
   const { t } = useTranslation(lng, "confirmation");
   const query = useSearchParams();
   const paid = query.get("success");
-  // const pages = useDynamicPageStore((state) => state.pages);
-  // const song = useQuestion2((state)=> state.song)
-  // const emails: string[] = [];
-  // const cid = useQuestion1((state) => state.cid);
-  // Object.keys(pages).map((id) => {
-  //   const email = pages[Number(id)]?.email;
-  //   emails.push(email);
-  // });
-  // console.log("emails:", emails);
 
   const [message, setMessage] = useState("");
 
@@ -84,7 +75,8 @@ const Payment = ({
     if (paid === "true") {
       sendEmail(song, cid);
       const envelope = sendDocusign();
-      setMessage(t("1")+". Docusign envelope ID: "+envelope);
+      console.log(envelope);
+      setMessage(t("1"));
     } else {
       setMessage(t("2"));
     }
