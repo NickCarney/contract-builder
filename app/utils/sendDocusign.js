@@ -9,21 +9,25 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
         console.error('Error creating envelope: CID');
         return;
     }
+    console.log("past cid check")
     // Configuration
     const apiClient = new docusign.ApiClient();
     apiClient.setBasePath('https://na4.docusign.net/restapi');
     apiClient.addDefaultHeader('Authorization', 'Bearer ' + accessToken);
+    console.log("past access token")
 
     // Create the envelope definition
     const envelopeDefinition = new docusign.EnvelopeDefinition();
     envelopeDefinition.emailSubject = 'MESA - Splits signature reminder: '+song;
     envelopeDefinition.status = 'sent';
+    console.log("past env def")
 
     // Read the document to be signed
     const ipfsGateway = `https://mesa.mypinata.cloud/ipfs/${cid}`;
     const response = await fetch(ipfsGateway);
     const pdfBuffer = await response.arrayBuffer();
     const base64Doc = Buffer.from(pdfBuffer).toString('base64');
+    console.log("past pdf get")
 
     // Create the document object
     const document = new docusign.Document();
@@ -31,6 +35,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     document.name = 'MESA - Splits signature reminder: '+ song;
     document.fileExtension = 'pdf';
     document.documentId = '1';
+    console.log("past doc")
 
     // Add the document to the envelope
     envelopeDefinition.documents = [document];
@@ -45,6 +50,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     signer.email = emails[index];
     signer.name = names[index];
     signer.recipientId = (index + 1).toString();
+    console.log("signer")
 
     // Create a signHere tab for the signer
     const signHere = new docusign.SignHere();
@@ -52,10 +58,12 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     signHere.anchorUnits = 'pixels';
     signHere.anchorXOffset = '64';
     signHere.anchorYOffset = '0';
+    console.log("past anchor")
 
     let tabs = new docusign.Tabs();
     tabs.signHereTabs = [signHere];
     signer.tabs = tabs;
+    console.log("past tabs")
 
 
     recipients.push(signer);
@@ -64,10 +72,12 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     // Add the recipients to the envelope
     envelopeDefinition.recipients = new docusign.Recipients();
     envelopeDefinition.recipients.signers = recipients;
+    console.log("past adding recipients")
 
     // Send the envelope
     const envelopesApi = new docusign.EnvelopesApi(apiClient);
     const accountId = process.env.DOCUSIGN_ACCOUNT_ID;
+    console.log("SENT ")
 
     envelopesApi.createEnvelope(accountId, { envelopeDefinition })
     .then((result) => {
