@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   try {
     const { data, error } = await resend.emails.send({
         from: 'Mesa <contracts@mesawallet.io>',
-        to: ['nick@mesawallet.io'],
+        to: ['contracts@mesawallet.io', 'nick@mesawallet.io'],
         subject: 'Docusign failed for song: '+songName,
         html: `<p>${JSON.stringify(recipients)}</p>`,
       });
