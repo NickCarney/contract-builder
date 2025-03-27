@@ -38,7 +38,7 @@ const Payment = ({
   const names = Object.values(pages).map((item) => item.legalName);
   const emails = Object.values(pages).map((item) => item.email);
   
-  console.log(cid, song, names, emails)
+  console.log("in payment:",cid, song, names, emails)
 
   const sendDocusign = async () => {
           const response = await fetch(`/en/api/docusign`, {

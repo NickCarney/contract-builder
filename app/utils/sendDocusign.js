@@ -4,7 +4,8 @@ const docusign = require('docusign-esign');
 
 
 const sendDocusign = async (accessToken, song, cid, names, emails) => {
-    if(cid==''){
+    console.log("in sendDocusign:",cid, song, names, emails)
+    if(cid===''){
         console.error('Error creating envelope: CID');
         return;
     }
