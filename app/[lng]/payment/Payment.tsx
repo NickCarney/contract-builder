@@ -25,6 +25,7 @@ const Payment = ({
   const cid = useQuestion1((state) => state.cid);
   const song = useQuestion2((state) => state.song);
   const pages = useDynamicPageStore((state) => state.pages);
+  const splitType = useQuestion1((state) => state.splitType);
   
   const names = Object.values(pages).map((item) => item.legalName);
   const emails = Object.values(pages).map((item) => item.email);
@@ -64,7 +65,7 @@ const Payment = ({
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
+          body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails, splitType: splitType }),
           });
 
       const data = await response.json();

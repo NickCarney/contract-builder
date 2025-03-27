@@ -3,8 +3,8 @@ const docusign = require('docusign-esign');
 
 
 
-const sendDocusign = async (accessToken, song, cid, names, emails) => {
-    console.log("in sendDocusign:",cid, song, names, emails)
+const sendDocusign = async (accessToken, song, cid, names, emails, splitType) => {
+    // console.log("in sendDocusign:",cid, song, names, emails)
     if(cid===''){
         console.error('Error creating envelope: CID');
         return;
@@ -18,7 +18,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
 
     // Create the envelope definition
     const envelopeDefinition = new docusign.EnvelopeDefinition();
-    envelopeDefinition.emailSubject = 'MESA - Splits signature reminder: '+song;
+    envelopeDefinition.emailSubject = song,splitType,' ownership splits by MESA ';
     envelopeDefinition.status = 'sent';
     console.log("past env def")
 
@@ -32,7 +32,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     // Create the document object
     const document = new docusign.Document();
     document.documentBase64 = base64Doc;
-    document.name = 'MESA - Splits signature reminder: '+ song;
+    document.name = song,splitType,' ownership splits by MESA ';
     document.fileExtension = 'pdf';
     document.documentId = '1';
     console.log("past doc")
