@@ -88,7 +88,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ songName: songName, recipients: recipients }),
+        body: JSON.stringify({ songName: song, recipients: recipients }),
       });
       console.log(response);
     }
