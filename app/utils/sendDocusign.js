@@ -5,8 +5,8 @@ const docusign = require('docusign-esign');
 
 const sendDocusign = async (accessToken, song, cid, names, emails) => {
     if(cid==''){
-        console.log('No CID');
         console.error('Error creating envelope: CID');
+        return;
     }
     // Configuration
     const apiClient = new docusign.ApiClient();
@@ -71,6 +71,8 @@ const sendDocusign = async (accessToken, song, cid, names, emails) => {
     envelopesApi.createEnvelope(accountId, { envelopeDefinition })
     .then((result) => {
         console.log(`Envelope created with ID: ${result.envelopeId}`);
+
+    return result.envelopeId;
     })
     .catch((error) => {
         console.error('Error creating envelope:', error);

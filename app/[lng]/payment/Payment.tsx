@@ -51,6 +51,7 @@ const Payment = ({
 
           const data = await response.json();
           console.log(data)
+          return data;
           };
 
 
@@ -81,9 +82,9 @@ const Payment = ({
 
   useEffect(() => {
     if (paid === "true") {
-      setMessage(t("1"));
       sendEmail(song, cid);
-      sendDocusign();
+      const envelope = sendDocusign();
+      setMessage(t("1")+". Docusign envelope ID: "+envelope);
     } else {
       setMessage(t("2"));
     }
