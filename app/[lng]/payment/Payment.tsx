@@ -31,20 +31,6 @@ const Payment = ({
   
   console.log("in payment:",cid, song, names, emails)
 
-  const sendDocusign = async () => {
-          const response = await fetch(`/en/api/docusign`, {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
-              });
-
-          const data = await response.json();
-          console.log(data)
-          return data;
-          };
-
 
   const sendEmail = async (songName: string, cid:string) => {
     try {
@@ -72,10 +58,23 @@ const Payment = ({
   };
 
   useEffect(() => {
+    const sendDocusign = async () => {
+      const response = await fetch(`/en/api/docusign`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails }),
+          });
+
+      const data = await response.json();
+      console.log(data)
+      };
     if (paid === "true") {
-      sendEmail(song, cid);
-      const envelope = sendDocusign();
-      console.log(envelope);
+      if(song!=="test"){
+        sendEmail(song, cid);
+      }
+      sendDocusign();
       setMessage(t("1"));
     } else {
       setMessage(t("2"));
