@@ -65,7 +65,7 @@ const Payment = ({
           headers: {
               "Content-Type": "application/json",
           },
-          body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails, splitType: splitType }),
+          body: JSON.stringify({ songName: song, cid: cid, names: names, emails: emails, splitType: splitType, lng: lng }),
           });
 
       const data = await response.json();

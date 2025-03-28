@@ -2,7 +2,7 @@
 const docusign = require('docusign-esign');
 
 
-const sendDocusign = async (accessToken, song, cid, names, emails, splitType) => {
+const sendDocusign = async (accessToken, song, cid, names, emails, splitType, lng) => {
     // console.log("in sendDocusign:",cid, song, names, emails)
     if(cid===''){
         console.error('Error creating envelope: CID');
@@ -49,12 +49,16 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
     signer.email = emails[index];
     signer.name = names[index];
     signer.recipientId = (index + 1).toString();
-    signer.clientUserId = "100"+(index + 1).toString();
+    // signer.clientUserId = "100"+(index + 1).toString(); //so not redirecting to docusing
     console.log("signer", signer)
 
     // Create a signHere tab for the signer
     const signHere = new docusign.SignHere();
-    signHere.anchorString = 'Signature'+(index+1).toString()+":";
+    if(lng==='en'){
+      signHere.anchorString = 'Signature'+(index+1).toString()+":";
+    }else{
+      signHere.anchorString = 'Enviar'+(index+1).toString()+":";
+    }
     signHere.anchorUnits = 'pixels';
     signHere.anchorXOffset = '64';
     signHere.anchorYOffset = '0';
