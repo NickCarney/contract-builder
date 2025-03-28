@@ -49,6 +49,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType) =>
     signer.email = emails[index];
     signer.name = names[index];
     signer.recipientId = (index + 1).toString();
+    signer.clientUserId = "100"+(index + 1).toString();
     console.log("signer", signer)
 
     // Create a signHere tab for the signer
