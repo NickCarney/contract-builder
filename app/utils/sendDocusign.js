@@ -57,7 +57,7 @@ const sendDocusign = async (accessToken, song, cid, names, emails, splitType, ln
     if(lng==='en'){
       signHere.anchorString = 'Signature'+(index+1).toString()+":";
     }else{
-      signHere.anchorString = 'Enviar'+(index+1).toString()+":";
+      signHere.anchorString = 'Firma'+(index+1).toString()+":";
     }
     signHere.anchorUnits = 'pixels';
     signHere.anchorXOffset = '64';
